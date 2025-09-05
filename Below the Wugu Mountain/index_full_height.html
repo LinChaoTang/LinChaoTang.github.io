@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Below the Wugu Mountain</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css?family=Inter:500" rel="stylesheet">
+    <style>
+        /* Basic Reset & Font */
+        html, body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Inter', Helvetica, sans-serif;
+            background-color: #fff;
+        }
+
+        body {
+            display: grid;
+            place-items: center;
+            width: 100%;
+            height: 100vh; /* Ensure body takes full viewport height */
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        /* Main Container */
+        .page-container {
+            width: 1440px;
+            height: 100%; /* Changed from 960px to fill parent (body) */
+            position: relative;
+            overflow: hidden;
+            background-color: #fff;
+        }
+
+        /* Left Navigation */
+        #left-nav {
+            position: absolute;
+            top: 28px;
+            left: 30px;
+            width: 220px;
+        }
+
+        #left-nav .lct-title {
+            height: 30px;
+            font-size: 20px;
+            font-weight: 500;
+            color: rgba(0, 0, 0, 0.95);
+            letter-spacing: -0.2px;
+            line-height: 30px;
+            white-space: nowrap;
+        }
+
+        #left-nav .nav-links {
+            margin-top: 74px;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 27px;
+        }
+        
+        #left-nav .nav-links a {
+            font-size: 15px;
+            letter-spacing: -0.15px;
+            font-weight: 500;
+            color: rgba(0, 0, 0, 0.95);
+            cursor: pointer;
+            transition: opacity 0.2s ease;
+            text-decoration: none;
+        }
+
+        /* Right Sidebar */
+        #right-sidebar {
+            position: absolute;
+            width: 220px; /* Increased width to prevent wrapping */
+            top: 32px;
+            left: 1190px; /* Adjusted left position */
+        }
+
+        .meta-entry {
+            position: absolute;
+            left: 0;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            gap: 7px;
+        }
+
+        .meta-entry dt {
+            align-self: stretch;
+            font-weight: 500;
+            color: rgba(0, 0, 0, 0.95);
+            font-size: 15px;
+            text-align: right;
+            letter-spacing: -0.15px;
+        }
+
+        .meta-entry dd {
+            align-self: stretch;
+            margin: 0;
+            font-weight: 500;
+            color: rgba(0, 0, 0, 0.4);
+            font-size: 15px;
+            text-align: right;
+            letter-spacing: -0.15px;
+        }
+
+        /* Main Content */
+        #main-content {
+            position: absolute;
+            top: 32px;
+            left: 350px;
+            width: 740px;
+            height: calc(100vh - 32px); /* Changed to be based on viewport height */
+            overflow-y: auto;
+            -ms-overflow-style: none;  /* IE and Edge */
+            scrollbar-width: none;  /* Firefox */
+        }
+
+        #main-content::-webkit-scrollbar {
+            display: none; /* Chrome, Safari, Opera */
+        }
+
+        .main-header {
+            width: 394px;
+            margin: 0 auto 88px auto;
+        }
+
+        .main-header h1 {
+            font-size: 32px;
+            text-align: center;
+            letter-spacing: -0.32px;
+            line-height: 48px;
+            color: rgba(0, 0, 0, 0.95);
+            margin: 0;
+            white-space: nowrap; /* Prevent line wrapping */
+        }
+
+        .main-header p {
+            font-size: 20px;
+            text-align: center;
+            letter-spacing: -0.20px;
+            line-height: 30px;
+            color: rgba(0, 0, 0, 0.4);
+            margin: 0;
+        }
+
+        .project-section {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 24px;
+            margin-bottom: 80px;
+        }
+
+        .project-section h2 {
+            align-self: stretch;
+            font-size: 20px;
+            text-align: center;
+            letter-spacing: -0.20px;
+            line-height: 30px;
+            color: rgba(0, 0, 0, 0.95);
+            margin: 0;
+        }
+
+        .project-section p {
+            width: 651px;
+            max-width: 100%;
+            font-weight: 400;
+            color: rgba(0, 0, 0, 0.95);
+            font-size: 15px;
+            text-align: center;
+            letter-spacing: -0.15px;
+            line-height: 22.5px;
+            margin: 0;
+        }
+
+        .project-section img {
+            width: 100%;
+            height: auto;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="page-container">
+        <!-- Left Navigation -->
+        <nav id="left-nav">
+            <a href="../index_final_v5.html" style="text-decoration: none; color: inherit;"><div class="lct-title">LCT</div></a>
+            <div class="nav-links">
+                <a href="../index_final_v5.html">Projects</a>
+                <a href="#about">About</a>
+            </div>
+        </nav>
+
+        <!-- Right Sidebar -->
+        <aside id="right-sidebar">
+            <div class="meta-entry" style="top: 0px;"><dt>Year</dt><dd>2019</dd></div>
+            <div class="meta-entry" style="top: 80px;"><dt>Type</dt><dd>Thesis Project (Individual Work)</dd></div>
+            <div class="meta-entry" style="top: 160px;"><dt>Location</dt><dd>Taipei, Taiwan</dd></div>
+            <div class="meta-entry" style="top: 240px;"><dt>Role</dt><dd>Curator & Lead Producer</dd></div>
+            <div class="meta-entry" style="top: 320px;"><dt>Medium</dt><dd>Video Installation and Printed Outputs</dd></div>
+        </aside>
+
+        <!-- Main Content -->
+        <main id="main-content">
+            <header class="main-header">
+                <h1>Below the Wugu Mountain</h1>
+                <p>A Time Machine for the Anthropocene</p>
+            </header>
+
+            <div class="sections-wrapper">
+                <section class="project-section">
+                    <h2>How Can Urban Infrastructure Adapt to a Changing Environment?</h2>
+                    <p>In the face of dual challenges from extreme climate and urbanization, contemporary cities are confronting the critical issues of environmental resilience and infrastructure transformation. The Wugu Mountain landfill, as a site bearing the historical imprint of post-war industrialization, not only reflects the environmental impact of human activities but also reveals the crucial role of urban infrastructure in both disaster and daily contexts.</p>
+                    <img src="Screenshot 2025-09-01 095913.png" alt="Aerial photo grid of Wugu Mountain area">
+                    <img src="Screenshot 2025-09-01 095946.png" alt="Zoning map of the site">
+                </section>
+
+                <section class="project-section">
+                    <h2>Landscape Genealogy: Emerging Territory</h2>
+                    <p>Over the past six decades, social and natural meanings have been projected, layered, and evolved in this place—through agricultural settlements, industrial zones, flood disasters and mitigation infrastructure, and the gentrification struggle across different social strata. This plan is both central and marginal.</p>
+                    <img src="Screenshot 2025-09-01 095958.png" alt="Timeline of landscape genealogy">
+                    <img src="Screenshot 2025-09-01 100014.png" alt="Map with color overlays showing development">
+                </section>
+
+                <section class="project-section">
+                    <h2>Political Geography: The Accumulating Anthropocene Strata</h2>
+                    <p>Each phase of existence is inscribed within the landscape. To the geographic cross-section, archaeological evidence layers from new to old: the Wugu Garbage Mountain formed by industrial waste, concrete bridges, embankment foundations, salt-affected soil from seawater intrusion, and organic-rich soil deposited on the floodplain. These material traces also reflect the rise and fall of social territories.</p>
+                    <img src="Screenshot 2025-09-01 100029.png" alt="3D layered strata diagram of the site">
+                    <img src="Screenshot 2025-09-01 100044.png" alt="Metabolic flow diagram of the project">
+                </section>
+
+                <section class="project-section">
+                    <h2>Infrastructure for the Future: From Landfill to Ecological Riverfront</h2>
+                    <p>Facing the dual crises of waste pollution and rising water levels, this project proposes a transformative approach to convert hazards into public-benefit landscapes. In the short term, the landfill will be dismantled in phases, with waste repurposed for embankments and waste-to-energy facilities harnessing residual heat. Over time, multifunctional levees and green landscapes will reshape the site into a resilient, ecologically restored riverfront.</p>
+                    <img src="Screenshot 2025-09-01 100056.png" alt="Site plan view of the proposed infrastructure">
+                    <img src="Screenshot 2025-09-01 100107.png" alt="Phased transformation diagrams of the landfill">
+                </section>
+
+                <section class="project-section">
+                    <h2>Spaces in-between: Sections of Infrastructure and Landscape</h2>
+                    <p>Axonometric view showing the sections of infrastructure and landscape, including Memorial Garden, Entrance Lobby, Columbarium Hall, and Waste Incineration Plant.</p>
+                    <img src="Screenshot 2025-09-01 100120.png" alt="Axonometric section view of the project">
+                    <img src="Screenshot 2025-09-05 014546.png" alt="Newest image 1">
+                    <img src="Screenshot 2025-09-05 014521.png" alt="Newest image 2">
+                    <img src="Screenshot 2025-09-05 014458.png" alt="Newest image 3">
+                </section>
+            </div>
+        </main>
+    </div>
+</body>
+</html>

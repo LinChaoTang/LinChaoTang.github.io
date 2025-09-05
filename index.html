@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LCT Portfolio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css?family=Inter:500" rel="stylesheet">
+    <style>
+        /* Basic Reset & Font */
+        html, body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Inter', Helvetica, sans-serif;
+            background-color: #fff;
+        }
+
+        body {
+            display: grid;
+            place-items: center;
+            width: 100%;
+            height: 100vh; /* Ensure body takes full viewport height */
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        /* Main Container */
+        .page-container {
+            width: 1440px;
+            height: 100%; /* Changed from 960px to fill parent (body) */
+            position: relative;
+            overflow: hidden;
+            background-color: #fff;
+        }
+
+        /* Sidebar */
+        .sidebar {
+            position: absolute;
+            top: 28px;
+            left: 30px;
+            width: 220px;
+        }
+
+        .sidebar header h1 {
+            margin: 0;
+            height: 30px;
+            font-size: 20px;
+            font-weight: 500;
+            color: rgba(0, 0, 0, 0.95);
+            letter-spacing: -0.2px;
+            line-height: 30px;
+            white-space: nowrap;
+        }
+
+        .sidebar nav {
+            margin-top: 74px;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 27px;
+        }
+        
+        .sidebar nav a {
+            font-size: 15px;
+            letter-spacing: -0.15px;
+            font-weight: 400;
+            color: rgba(0, 0, 0, 0.95);
+            cursor: pointer;
+            transition: opacity 0.2s ease;
+            text-decoration: none;
+        }
+
+        .sidebar nav a:hover {
+            opacity: 0.7;
+        }
+
+        /* Main Content */
+        .main-content {
+            position: absolute;
+            top: 32px;
+            left: 250px;
+            width: 960px; /* Grid (940px) + Scrollbar room (~20px) */
+            height: calc(100vh - 32px);
+            overflow-y: auto;
+            -ms-overflow-style: none;  /* IE and Edge */
+            scrollbar-width: none;  /* Firefox */
+        }
+
+        .main-content::-webkit-scrollbar {
+            display: none; /* Chrome, Safari, Opera */
+        }
+
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            width: 940px; /* Fixed width */
+        }
+
+        .project-card {
+             width: 460px;
+        }
+        
+        .project-card a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .project-card-image {
+            width: 100%;
+            height: auto;
+            display: block;
+            background-color: #d9d9d9;
+        }
+
+        .project-card-title {
+            font-size: 20px;
+            text-align: center;
+            letter-spacing: -0.2px;
+            font-weight: 500;
+            color: rgba(0, 0, 0, 0.95);
+            padding: 15px 0 0 0;
+        }
+
+        /* Animation */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-1rem); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .fade-in {
+            opacity: 0;
+            animation: fadeIn 0.8s ease-out forwards;
+            animation-delay: var(--animation-delay, 0ms);
+        }
+
+    </style>
+</head>
+<body>
+    <div class="page-container">
+        <!-- Sidebar Navigation -->
+        <aside class="sidebar fade-in" style="--animation-delay: 0ms;">
+            <header>
+                <h1>LCT</h1>
+            </header>
+            <nav>
+                <a href="#projects">Projects</a>
+                <a href="#about">About</a>
+            </nav>
+        </aside>
+
+        <!-- Main Content Grid -->
+        <main class="main-content">
+            <div class="project-grid">
+                <!-- Project 1 -->
+                <div class="project-card fade-in" style="--animation-delay: 200ms;">
+                    <a href="./Below the Wugu Mountain/index_full_height.html">
+                        <img class="project-card-image" src="./Below the Wugu Mountain/Screenshot 2025-09-01 095913.png" alt="Below the Wugu Mountain">
+                        <h2 class="project-card-title">Below the Wugu Mountain</h2>
+                    </a>
+                </div>
+
+                <!-- Project 2 -->
+                <div class="project-card fade-in" style="--animation-delay: 400ms;">
+                    <a href="./Learning from the Earthworks/index.html">
+                        <img class="project-card-image" src="./Learning from the Earthworks/Screenshot 2025-09-01 104316.png" alt="Learning from the Earthworks">
+                        <h2 class="project-card-title">Learning from the Earthworks</h2>
+                    </a>
+                </div>
+
+                <!-- Project 3 -->
+                <div class="project-card fade-in" style="--animation-delay: 600ms;">
+                    <a href="./Drawing A Line on the Ground Map/index_full_height.html">
+                        <img class="project-card-image" src="./Drawing A Line on the Ground Map/Screenshot 2025-09-02 234605.png" alt="Drawing A Line on the Ground Map">
+                        <h2 class="project-card-title">Drawing A Line on the Ground Map</h2>
+                    </a>
+                </div>
+
+            </div>
+        </main>
+    </div>
+</body>
+</html>

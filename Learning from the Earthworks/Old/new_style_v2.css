@@ -1,0 +1,79 @@
+@font-face {
+    font-display: block;
+    font-family: "Diatype Variable";
+    src: url("https://type.cargo.site/files/Cargo-DiatypePlusVariable.woff2") format("woff2-variations");
+    font-style: normal;
+    font-weight: 200 1000;
+}
+
+body, html {
+    margin: 0;
+    padding: 0;
+    background-color: #fff;
+    font-family: "Diatype Variable", sans-serif;
+    font-size: 14px;
+    color: rgba(0, 0, 0, 0.75);
+}
+
+body {
+    display: flex;
+}
+
+p, div {
+    font-size: 1.2rem;
+    font-weight: 400;
+    line-height: 1.3;
+}
+
+h1, h2, h3, b {
+    font-family: "Diatype Variable";
+    font-style: normal;
+    font-weight: 400;
+    color: rgba(0, 0, 0, 0.85);
+    margin: 0;
+}
+
+h1 { font-size: 2.2rem; line-height: 1.1; }
+h2 { font-size: 1.2rem; line-height: 1.2; }
+h3 { font-size: 1rem; line-height: 1.2; }
+
+.sidebar {
+    width: 33%;
+    position: fixed;
+    top: 0; left: 0; bottom: 0;
+    padding: 1.5rem;
+    overflow-y: auto;
+}
+
+.main-content {
+    margin-left: 33%;
+    width: 67%;
+    padding: 1.5rem;
+}
+
+.sidebar-content h1 { font-size: 1.8rem; }
+.sidebar-content .email { color: rgba(0, 0, 0, 0.6); margin-bottom: 1rem; }
+.sidebar-content hr { border: 0; height: 1px; background: rgba(0, 0, 0, 0.85); margin: 1.5rem 0; }
+.sidebar-content .job, .education { margin-bottom: 1rem; }
+.sidebar-content p { font-size: 1rem; margin: 0.2rem 0; }
+
+.project-header { margin-bottom: 1.5rem; }
+.project-header .subtitle { font-size: 1.5rem; color: rgba(0, 0, 0, 0.6); }
+
+.project-meta { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; margin-bottom: 1.5rem; }
+.project-meta b { display: block; font-size: 1rem; }
+.project-meta p { margin: 0; font-size: 1rem; }
+
+.main-divider { border: 0; height: 1px; background: rgba(0, 0, 0, 0.85); margin: 2rem 0; }
+
+.narrative-item { margin-bottom: 3rem; }
+.narrative-item h2 { font-size: 1.8rem; margin-bottom: 1rem; }
+.narrative-item p { font-size: 1.2rem; margin-bottom: 1.5rem; }
+
+img { max-width: 100%; display: block; margin-bottom: 1rem; }
+
+@media (max-width: 900px) {
+    body { flex-direction: column; }
+    .sidebar { position: relative; width: 100%; border-bottom: 1px solid rgba(0, 0, 0, 0.85); }
+    .main-content { margin-left: 0; width: 100%; }
+}

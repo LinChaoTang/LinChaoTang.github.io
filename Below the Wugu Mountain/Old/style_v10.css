@@ -1,0 +1,77 @@
+/* Global and Typography */
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    line-height: 1.8;
+    font-size: 16px;
+    margin: 0;
+    padding: 0;
+    background-color: #fff;
+    color: #333;
+}
+
+h1, h2, h3 { font-weight: 400; line-height: 1.4; }
+h1 { font-size: 2.25rem; text-align: center; margin-bottom: 1rem; }
+h2 { font-size: 1.75rem; margin-top: 3rem; margin-bottom: 1.5rem; }
+p { margin-bottom: 1.5rem; max-width: 720px; }
+img { max-width: 100%; height: auto; display: block; }
+
+/* Layout */
+.container { max-width: 1600px; margin: 0 auto; padding: 3rem 2rem; }
+
+.main-layout {
+    display: grid;
+    grid-template-columns: 1fr; /* Mobile default */
+}
+
+@media (min-width: 1200px) {
+    .main-layout {
+        grid-template-columns: 1fr 3fr 1fr;
+        gap: 3rem;
+        align-items: start;
+    }
+    .left-nav { grid-column: 1; position: sticky; top: 3rem; }
+    .content-narrative { grid-column: 2; }
+    .project-info { grid-column: 3; position: sticky; top: 3rem; }
+}
+
+/* Left Nav */
+.left-nav nav a {
+    display: block;
+    font-weight: 600;
+    color: #000;
+    text-decoration: none;
+    font-size: 1rem; /* Match font-size of dt */
+    margin-top: 1.5rem; /* Match margin-top of dt */
+    margin-bottom: 2.45rem; /* Approximate space to align with next dt */
+}
+.left-nav nav a:first-child {
+    margin-top: 1.5rem; /* Align with first dt */
+}
+
+/* Right Info Sidebar */
+.project-info {
+    padding-top: 0; /* Remove original padding */
+}
+.project-info dl { margin: 0; padding: 0; }
+.project-info dt {
+    font-weight: 600;
+    color: #000;
+    margin-top: 1.5rem;
+}
+.project-info dd {
+    margin-left: 0;
+    font-size: 0.95rem;
+    color: #555;
+    margin-bottom: 1rem;
+}
+
+/* Narrative Content */
+.narrative-header { text-align: center; margin-bottom: 4rem; }
+.narrative-header p { font-size: 1.25rem; color: #666; max-width: 100%; }
+.narrative-item { margin-bottom: 4rem; }
+.narrative-item img { margin-bottom: 1.5rem; }
+.narrative-item h2 { margin-top: 6rem; text-align: center; }
+.narrative-item p { text-align: center; margin-left: auto; margin-right: auto; }
+
+/* Footer */
+footer { text-align: center; padding: 3rem 1rem; margin-top: 4rem; border-top: 1px solid #eee; color: #999; }

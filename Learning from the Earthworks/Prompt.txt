@@ -1,0 +1,74 @@
+ 【終極版】作品集網頁生成指令
+
+  目標：
+  為新專案生成一個單頁式作品集網頁，包含 index.html 和 style.css 兩個檔案。
+
+  第一部分：請填寫您的專案內容
+
+  1. 專案基本資料 (將顯示於右上角固定區塊):
+
+   1 Project: [請填寫專案名稱]
+   2 Year: [請填寫年份]
+   3 Type: [請填寫類型]
+   4 Location: [請填寫地點]
+   5 Instructor: [請填寫指導老師，若無則免填]
+   6 Role: [請填寫您的角色]
+   7 Medium: [請填寫媒介]
+   8 (可自行增減其他欄位)
+
+  2. 專案敘事內容與圖文對應 (這是最重要的部分):
+  (請將您的專案說明，按順序分成數個區塊，並明確指定每個區塊要搭配的圖片檔名)
+
+   * 主標題 (H1): [請填寫頁面主標題]
+   * 副標題 (Header P): [請填寫頁面副標題]
+
+   * 區塊 1
+       * 標題 (H2): [第一段的標題]
+       * 內文 (P): [第一段的說明文字]
+       * 對應圖片: image-A.png
+
+   * 區塊 2
+       * 標題 (H2): [第二段的標題]
+       * 內文 (P): [第二段的說明文字]
+       * 對應圖片: image-B.jpg, image-C.jpg (若搭配多張圖，請用逗號隔開)
+
+   * (請依此類推，需要幾個區塊就複製幾個)
+
+  3. 檔案位置:
+   * 我會將所有圖片檔案，與 index.html 和 style.css 放在同一個資料夾中。
+
+  ---
+
+  第二部分：請使用以下固定的設計與佈局規則 (無需修改)
+
+  A. 整體佈局 (Layout):
+   * 容器 (Container): max-width: 1600px;, margin: 0 auto;, padding: 3rem 2rem;
+   * 桌面版面 (Desktop Layout):
+       * 採用三欄式 Grid 佈局: grid-template-columns: 1fr 3fr 1fr; (左中右比例為 1:3:1)。
+       * 主要敘事內容 (.content-narrative) 放置在中間的欄位。
+       * 專案基本資料 (.project-info) 放置在右邊的欄位。
+   * 行動裝置版面 (Mobile Layout): 採用單欄佈局。
+
+  B. 專案基本資料區塊 (Project Info Box):
+   * 定位: 在桌面版面下，此區塊必須使用 position: fixed; 固定在畫面右上角。
+       * top: 3rem;
+       * right: 3rem;
+       * max-width: 280px;
+   * 樣式:
+       * 使用 <dl> 定義列表。
+       * <dt> (標題) font-weight: 600;, margin-top: 1.5rem;
+       * <dd> (內容) font-size: 0.95rem;, color: #555;
+
+  C. 文字與排版 (Typography):
+   * 全域字體: font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+   * 全域行高: line-height: 1.8;
+   * H1 (主標題): font-size: 2.25rem;, text-align: center;
+   * H2 (段落標題): font-size: 1.75rem;, text-align: center;
+   * P (段落內文): max-width: 720px;, text-align: center;, margin-left: auto;, margin-right: auto;
+
+  D. 間距 (Spacing):
+   * 圖片與其後標題的距離: 圖片下方的 <h2> 必須有 margin-top: 6rem; 來創造足夠的空間。
+   * 敘事區塊間的距離: 每個 .narrative-item 區塊需有 margin-bottom: 4rem;。
+
+  E. 頁尾 (Footer):
+   * 置中排列，並有上下 3rem 的 padding。

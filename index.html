@@ -83,8 +83,9 @@
 
         .project-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); /* Make grid responsive */
+            grid-template-columns: repeat(auto-fill, minmax(400px, 460px)); /* Don't stretch beyond 460px */
             gap: 20px;
+            justify-content: start; /* Align the grid to the left */
         }
         
         .project-card a {

@@ -24,23 +24,13 @@
             box-sizing: border-box;
         }
 
-        /* Main Container - Refactored for Flexbox */
-        .page-container {
-            width: 100%;
-            max-width: 1280px; /* Adjusted max-width for better spacing */
-            margin: 0 auto; /* Center the container */
-            display: flex;
-            flex-direction: row;
-            justify-content: flex-start;
-            align-items: flex-start;
-            padding: 28px 30px; /* Add padding to mimic old spacing */
-        }
-
-        /* Sidebar - Refactored for Flexbox */
+        /* Sidebar - Fixed Position */
         .sidebar {
+            position: fixed;
+            top: 28px;
+            left: 30px;
             width: 220px;
-            flex-shrink: 0; /* Prevent sidebar from shrinking */
-            margin-right: 40px; /* Space between sidebar and content */
+            z-index: 10;
         }
 
         .sidebar header h1 {
@@ -76,16 +66,19 @@
             opacity: 0.7;
         }
 
-        /* Main Content - Refactored for Flexbox */
+        /* Main Content - Adjusted for Fixed Sidebar */
         .main-content {
-            width: 100%; /* Take up remaining space */
+            padding-left: 280px; /* 220px sidebar + 60px gap */
+            padding-right: 30px;
+            padding-top: 28px;
+            width: 100%;
         }
 
         .project-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(400px, 460px)); /* Don't stretch beyond 460px */
+            grid-template-columns: repeat(auto-fill, minmax(400px, 460px));
             gap: 20px;
-            justify-content: start; /* Align the grid to the left */
+            justify-content: center; /* Center the grid */
         }
         
         .project-card a {
@@ -123,15 +116,10 @@
 
         /* Responsive Media Query */
         @media (max-width: 768px) {
-            .page-container {
-                flex-direction: column; /* Stack in natural order */
-                padding: 20px;
-            }
-
             .sidebar {
+                position: static; /* Un-fix the sidebar */
                 width: 100%;
-                margin-right: 0;
-                margin-bottom: 40px; /* Space below the sidebar */
+                padding: 20px;
             }
 
             .sidebar header h1 {
@@ -143,7 +131,7 @@
             }
 
             .main-content {
-                height: auto; /* Let content define height */
+                padding: 20px; /* Reset padding */
             }
 
             .project-grid {

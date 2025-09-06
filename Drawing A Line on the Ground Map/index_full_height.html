@@ -178,10 +178,11 @@
 
         .video-wrapper iframe {
             position: absolute;
-            top: 0;
-            left: 0;
+            top: 50%;
+            left: 50%;
             width: 100%;
             height: 100%;
+            transform: translate(-50%, -50%) scale(1.05); /* Scale to hide black bars */
         }
 
         /* Responsive Layout */
@@ -243,7 +244,9 @@
 
             <div class="sections-wrapper">
                 <section class="project-section">
-                    <iframe width="560" height="315" src="https://www.youtube.com/embed/efycOn6CCgs?si=uc0QAUqnhzXTL_NN" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                    <div class="video-wrapper">
+                        <iframe src="https://www.youtube.com/embed/efycOn6CCgs?si=uc0QAUqnhzXTL_NN" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                    </div>
                     <img src="txt.png" alt="Data from the project">
                     <img src="Screenshot 2025-09-02 234605.png" alt="A hand holding a stack of papers">
                 </section>

@@ -64,16 +64,17 @@
             top: 32px;
             right: 30px;
             z-index: 10;
+            height: 100%; /* Needed for absolute positioning of children */
         }
 
         .meta-entry {
-            position: relative; /* Changed from absolute */
+            position: absolute; /* Restored for original layout */
+            left: 0;
             width: 100%;
             display: flex;
             flex-direction: column;
             align-items: flex-end;
             gap: 7px;
-            margin-bottom: 48px; /* Added spacing */
         }
 
         .meta-entry dt {
@@ -110,7 +111,7 @@
         }
 
         .main-header {
-            width: 394px;
+            width: 100%;
             margin: 0 auto 88px auto;
         }
 
@@ -121,7 +122,6 @@
             line-height: 48px;
             color: rgba(0, 0, 0, 0.95);
             margin: 0;
-            white-space: nowrap;
         }
 
         .main-header p {
@@ -163,9 +163,25 @@
             margin: 0;
         }
 
-        .project-section img, .project-section video {
+        .project-section img {
             width: 100%;
             height: auto;
+        }
+
+        .video-wrapper {
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+            height: 0;
+            width: 100%;
+            overflow: hidden;
+        }
+
+        .video-wrapper iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
         }
 
         /* Responsive Layout */
@@ -176,9 +192,11 @@
                 max-width: 740px;
                 margin: 20px auto;
                 padding: 0 20px;
+                height: auto;
             }
 
             #right-sidebar .meta-entry {
+                position: static; /* Un-fix for mobile */
                 align-items: flex-start;
                 text-align: left;
                 margin-bottom: 20px;
@@ -225,7 +243,7 @@
 
             <div class="sections-wrapper">
                 <section class="project-section">
-                    <iframe width="100%" height="415" src="https://www.youtube.com/embed/efycOn6CCgs" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/efycOn6CCgs?si=uc0QAUqnhzXTL_NN" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
                     <img src="txt.png" alt="Data from the project">
                     <img src="Screenshot 2025-09-02 234605.png" alt="A hand holding a stack of papers">
                 </section>

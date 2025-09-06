@@ -3,33 +3,36 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LCT</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css?family=Inter:500" rel="stylesheet">
+    <title>LCT - Responsive Test</title>
     <style>
-        /* Basic Reset & Font */
+        /* Basic Reset */
         body, html {
             margin: 0;
             padding: 0;
-            font-family: 'Inter', Helvetica, sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
             background-color: #fff;
         }
 
-        * {
+        /* Main Container */
+        .page-container {
+            display: flex;
+            flex-direction: row;
+            max-width: 1440px;
+            min-height: 100vh;
+            margin: 0 auto;
+            padding: 28px 30px;
             box-sizing: border-box;
         }
 
-        /* Left Navigation - Fixed */
-        #left-nav {
-            position: fixed;
-            top: 28px;
-            left: 30px;
+        /* Sidebar */
+        .sidebar {
             width: 220px;
-            z-index: 10;
+            flex-shrink: 0;
+            margin-right: 20px;
         }
 
-        #left-nav .lct-title {
+        .sidebar header h1 {
+            margin: 0;
             height: 30px;
             font-size: 20px;
             font-weight: 500;
@@ -39,45 +42,42 @@
             white-space: nowrap;
         }
 
-        #left-nav .nav-links {
+        .sidebar nav {
             margin-top: 74px;
             display: flex;
             flex-direction: column;
             align-items: flex-start;
             gap: 27px;
         }
-        
-        #left-nav .nav-links a {
+
+        .sidebar nav a {
             font-size: 15px;
             letter-spacing: -0.15px;
-            font-weight: 500;
+            font-weight: 400;
             color: rgba(0, 0, 0, 0.95);
             cursor: pointer;
             transition: opacity 0.2s ease;
             text-decoration: none;
         }
 
-        /* Right Placeholder Sidebar - Fixed */
-        .right-sidebar-placeholder {
-            position: fixed;
-            top: 28px;
-            right: 30px;
-            width: 220px;
-            z-index: 10;
+        .sidebar nav a:hover {
+            opacity: 0.7;
         }
 
-        /* Main Content - Centered between sidebars */
+        /* Main Content */
         .main-content {
-            width: 940px; /* 2 * 460px cards + 20px gap */
-            margin: 0 auto; /* This will now perfectly center the content */
-            padding-top: 28px;
+            flex-grow: 1;
+            width: 100%;
         }
 
         .project-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
-            column-gap: 20px;
-            row-gap: 8px; /* 2a */
+            gap: 20px;
+        }
+
+        .project-card {
+             width: 100%;
         }
 
         .project-card a {
@@ -90,11 +90,6 @@
             height: auto;
             display: block;
             background-color: #d9d9d9;
-            transition: opacity 0.3s ease; /* Hover transition */
-        }
-
-        .project-card a:hover .project-card-image {
-            opacity: 0.7; /* Hover effect */
         }
 
         .project-card-title {
@@ -103,7 +98,7 @@
             letter-spacing: -0.2px;
             font-weight: 500;
             color: rgba(0, 0, 0, 0.95);
-            padding: 4px 0 0 0; /* a */
+            padding: 15px 0 0 0;
         }
 
         /* Animation */
@@ -119,50 +114,44 @@
         }
 
         /* Responsive adjustments */
-        @media (max-width: 1420px) { /* Breakpoint when sidebars and content might collide */
-            .main-content {
-                width: auto;
-                margin: 0 270px; /* Use margins to avoid sidebars */
-            }
-        }
-
         @media (max-width: 768px) {
-            #left-nav {
-                position: static;
-                width: 100%;
+            .page-container {
+                flex-direction: column;
                 padding: 20px;
-                box-sizing: border-box;
             }
 
-            .right-sidebar-placeholder {
-                display: none; /* Hide the placeholder on mobile */
-            }
-
-            .main-content {
+            .sidebar {
                 width: 100%;
-                margin: 0;
-                padding: 0 20px 20px 20px;
+                margin-right: 0;
+                margin-bottom: 30px;
+            }
+
+            .sidebar nav {
+                margin-top: 20px;
+                flex-direction: row;
+                flex-wrap: wrap;
+                gap: 20px;
             }
 
             .project-grid {
                 grid-template-columns: 1fr;
             }
         }
+
     </style>
 </head>
 <body>
     <div class="page-container">
         <!-- Sidebar Navigation -->
-        <nav id="left-nav" class="fade-in" style="--animation-delay: 0ms;">
-            <a href="/" style="text-decoration: none; color: inherit;"><div class="lct-title">LCT</div></a>
-            <div class="nav-links">
+        <aside class="sidebar fade-in" style="--animation-delay: 0ms;">
+            <header>
+                <h1>LCT</h1>
+            </header>
+            <nav>
                 <a href="#projects">Projects</a>
                 <a href="#about">About</a>
-            </div>
-        </nav>
-
-        <!-- Right Placeholder Sidebar -->
-        <aside class="right-sidebar-placeholder"></aside>
+            </nav>
+        </aside>
 
         <!-- Main Content Grid -->
         <main class="main-content">

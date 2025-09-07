@@ -20,41 +20,33 @@
             box-sizing: border-box;
         }
 
-        /* Left Navigation - Fixed */
+        /* Left Navigation - Unified Flexbox Layout */
         #left-nav {
             position: fixed;
-            top: 28px;
+            top: 32px;
             left: 30px;
             width: 220px;
             z-index: 10;
-        }
-
-        #left-nav .lct-title {
-            height: 30px;
-            font-size: 20px;
-            font-weight: 500;
-            color: rgba(0, 0, 0, 0.95);
-            letter-spacing: -0.2px;
-            line-height: 30px;
-            white-space: nowrap;
-        }
-
-        #left-nav .nav-links {
-            margin-top: 74px;
             display: flex;
             flex-direction: column;
-            align-items: flex-start;
-            gap: 27px;
         }
-        
-        #left-nav .nav-links a {
-            font-size: 15px;
-            letter-spacing: -0.15px;
+
+        /* Unified settings for all navigation items */
+        .nav-item {
+            height: 80px; /* Key: All items are 80px high for equal spacing */
             font-weight: 500;
             color: rgba(0, 0, 0, 0.95);
             cursor: pointer;
             transition: opacity 0.2s ease;
             text-decoration: none;
+            font-size: 15px; /* Default font size */
+            letter-spacing: -0.15px;
+        }
+
+        /* Style specifically for the LCT title */
+        .lct-title-style {
+            font-size: 20px; /* Enlarge font */
+            letter-spacing: -0.2px;
         }
 
         /* Right Placeholder Sidebar - Fixed */
@@ -73,12 +65,19 @@
             padding-top: 28px;
         }
 
+        /* --- MASONRY GRID START --- */
         .project-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
+            column-count: 2;
             column-gap: 20px;
-            row-gap: 8px; /* 2a */
         }
+
+        .project-card {
+            break-inside: avoid; 
+            margin-bottom: 20px;
+            display: inline-block;
+            width: 100%; 
+        }
+        /* --- MASONRY GRID END --- */
 
         .project-card a {
             text-decoration: none;
@@ -98,12 +97,12 @@
         }
 
         .project-card-title {
-            font-size: 20px;
+            margin-top: 8px; 
+            font-size: 16px;
             text-align: center;
             letter-spacing: -0.2px;
             font-weight: 500;
             color: rgba(0, 0, 0, 0.95);
-            padding: 4px 0 0 0; /* a */
         }
 
         /* Animation */
@@ -145,7 +144,7 @@
             }
 
             .project-grid {
-                grid-template-columns: 1fr;
+                column-count: 1;
             }
         }
     </style>
@@ -153,12 +152,10 @@
 <body>
     <div class="page-container">
         <!-- Sidebar Navigation -->
-        <nav id="left-nav" class="fade-in" style="--animation-delay: 0ms;">
-            <a href="/" style="text-decoration: none; color: inherit;"><div class="lct-title">LCT</div></a>
-            <div class="nav-links">
-                <a href="#projects">Projects</a>
-                <a href="#about">About</a>
-            </div>
+        <nav id="left-nav">
+            <a href="index.html" class="nav-item lct-title-style">LCT</a>
+            <a href="index.html" class="nav-item">Projects</a>
+            <a href="#about" class="nav-item">About</a>
         </nav>
 
         <!-- Right Placeholder Sidebar -->
@@ -175,19 +172,27 @@
                     </a>
                 </div>
 
-                <!-- Project 2 -->
+                <!-- Project 3 -->
                 <div class="project-card fade-in" style="--animation-delay: 400ms;">
-                    <a href="./Learning from the Earthworks/index.html">
+                    <a href="./Drawing A Line on the Ground Map/index_full_height.html">
+                        <img class="project-card-image" src="./Drawing A Line on the Ground Map/Screenshot 2025-09-02 234605.png" alt="Drawing A Line on the Ground Map">
+                        <h2 class="project-card-title">Drawing A Line on the Ground Map</h2>
+                    </a>
+                </div>
+
+                <!-- Project 2 -->
+                <div class="project-card fade-in" style="--animation-delay: 600ms;">
+                    <a href="./Learning from the Earthworks/index_full_height.html">
                         <img class="project-card-image" src="./Learning from the Earthworks/Screenshot 2025-09-01 104316.png" alt="Learning from the Earthworks">
                         <h2 class="project-card-title">Learning from the Earthworks</h2>
                     </a>
                 </div>
 
-                <!-- Project 3 -->
-                <div class="project-card fade-in" style="--animation-delay: 600ms;">
-                    <a href="./Drawing A Line on the Ground Map/index_full_height.html">
-                        <img class="project-card-image" src="./Drawing A Line on the Ground Map/Screenshot 2025-09-02 234605.png" alt="Drawing A Line on the Ground Map">
-                        <h2 class="project-card-title">Drawing A Line on the Ground Map</h2>
+                <!-- Project 4 -->
+                <div class="project-card fade-in" style="--animation-delay: 800ms;">
+                    <a href="./Super Public/index.html">
+                        <img class="project-card-image" src="./Super Public/Screenshot 2025-09-06 095800.png" alt="Super Public">
+                        <h2 class="project-card-title">Super Public</h2>
                     </a>
                 </div>
 

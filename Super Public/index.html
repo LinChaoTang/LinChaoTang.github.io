@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Learning from the Earthworks</title>
+    <title>Super Public</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css?family=Inter:500" rel="stylesheet">
@@ -170,9 +170,14 @@
         }
 
         .image-grid-2-col {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 20px;
+            column-count: 2;
+            column-gap: 20px;
+            width: 100%;
+        }
+
+        .image-grid-2-col > img {
+            break-inside: avoid;
+            margin-bottom: 20px;
             width: 100%;
         }
 
@@ -204,73 +209,77 @@
                 padding: 20px;
             }
         }
+
+        @media (max-width: 768px) {
+            .image-grid-2-col {
+                column-count: 1;
+            }
+        }
     </style>
 </head>
 <body>
     <div class="page-container">
-        <!-- Left Navigation -->
         <nav id="left-nav">
             <a href="../index.html" class="nav-item lct-title-style">LCT</a>
             <a href="../index.html" class="nav-item">Projects</a>
             <a href="#about" class="nav-item">About</a>
         </nav>
 
-        <!-- Right Sidebar -->
         <aside id="right-sidebar">
-            <div class="meta-entry" style="top: 0px;"><dt>Year</dt><dd>2019</dd></div>
-            <div class="meta-entry" style="top: 80px;"><dt>Type</dt><dd>Studio Project (Group research/Individual Work)</dd></div>
-            <div class="meta-entry" style="top: 160px;"><dt>Location</dt><dd>Turpan, China</dd></div>
-            <div class="meta-entry" style="top: 240px;"><dt>Instructor</dt><dd>Chia-Shun Liao</dd></div>
-            <div class="meta-entry" style="top: 320px;"><dt>Key Themes</dt><dd>Material Performance, Climate Response, Tactile</dd></div>
+            <div class="meta-entry"><dt>Year</dt><dd>2018</dd></div>
+            <div class="meta-entry"><dt>Type</dt><dd>Studio Project (Individual Work)</dd></div>
+            <div class="meta-entry"><dt>Location</dt><dd>Taichung, Taiwan</dd></div>
+            <div class="meta-entry"><dt>Instructor</dt><dd>Chia-Shun Liao</dd></div>
         </aside>
 
-        <!-- Main Content -->
         <main id="main-content">
             <header class="main-header">
-                <h1>Learning from the Earthworks</h1>
-                <p>Thickness Meets Temperature</p>
+                <h1>Super Public</h1>
+                <p>Reclaim the Right to the City</p>
             </header>
 
             <div class="sections-wrapper">
+
                 <section class="project-section">
-                    <h2>How Does Climate Become Architecture?</h2>
-                    <p>In modern construction logic's pursuit of building performance, tactile experience and microclimate perception of the human body are often overlooked. This project reexamines the embodied wisdom in traditional rammed earth architecture, studying how it creates rich tactile experiences and comfortable microclimates through material properties and constructional details.</p>
-                    <img src="Screenshot 2025-09-01 104316.png" alt="Project visualization 1">
-                    <img src="Screenshot 2025-09-01 104338.png" alt="Project visualization 2">
+                    <h2>Toward a Private-Object City</h2>
+                    <p>As residential types evolve, not only has the intensity of building block usage increased, but the Floor Area Ratio (FAR) restrictions have also been relaxed, allowing more building floor area per unit of land. This shift has intensified the degree of building privatization, turning the once-rich gradations between public and private realms into stark, black-and-white separations. Consequently, the "objecthood" of urban buildings becomes increasingly pronounced, with these private objects occupying public spaces.</p>
+                    <img src="Screenshot 2025-09-06 095800.png" alt="Toward a Private-Object City">
                 </section>
 
                 <section class="project-section">
-                    <h2>Index of Global Climate and Vernacular Architecture</h2>
-                    <p>This studio begins with the relationship between climate and architectural typologies. It identifies representative traditional architectural samples from global climatic typologies and categorizes them based on the distribution of building forms, materials, and climatic conditions such as temperature and humidity.</p>
-                    <img src="Screenshot 2025-09-01 104353.png" alt="Climate and architecture index">
-                    <img src="Screenshot 2025-09-01 104417.png" alt="Material and temperature distribution">
+                    <h2>Evolution of Urban Residential Types</h2>
+                    <p>The internal organization of residences has evolved to reflect high density and privatization characteristics, with more individual property owners sharing each unit of building land. The service core has gradually become the dominant feature of each block and building, with minimized, highly efficient vertical circulation and utility shafts, maximizing private interior space within each household unit.</p>
+                    <img src="Screenshot 2025-09-06 095845.png" alt="Evolution of Urban Residential Types">
                 </section>
 
                 <section class="project-section">
-                    <h2>Tectonic of Rammed Earth Architecture</h2>
-                    <p>From a technical perspective, earth has a high specific heat capacity, enabling passive thermal regulation to control indoor temperatures. Once compacted and air-dried, rammed earth also offers structural stability and weather resistance. On a cultural level, earthworks provide tactile experiences through material texture, as well as temperature and humidity sensations.</p>
-                    <img src="Screenshot 2025-09-01 104430.png" alt="Rammed earth architecture tectonics">
-                    <img src="Screenshot 2025-09-01 104441.png" alt="Traditional vs Modern approach">
+                    <img src="Screenshot 2025-09-06 095906.png" alt="Section perspective of the building">
                 </section>
 
                 <section class="project-section">
-                    <h2>Form Follows Temperature</h2>
-                    <p>By overlaying the time-temperature curves of rammed earth walls with varying thicknesses onto the optimal human comfort temperature for different indoor functions, the suitable wall thickness for each room is defined. The temperature lag effect created by the wall thickness ensures that each room remains at an optimal temperature during human activity.</p>
-                    <img src="Screenshot 2025-09-01 104452.png" alt="Form follows temperature diagram">
-                    <img src="Screenshot 2025-09-01 105247.png" alt="Floor plan temperature zones">
+                    <h2>Structure with Minimal Ground Occupation</h2>
+                    <p>Six tubular structural supports are the only architectural elements in contact with the ground, lifting the top truss structure, from which all residential and public spaces are suspended. By occupying the ground minimally, this design creates a free ground that allows for uninterrupted passage of all urban activities.</p>
+                    <img src="Screenshot 2025-09-06 095934.png" alt="Structure with Minimal Ground Occupation">
                 </section>
 
                 <section class="project-section">
-                    <h2>A Tectonic Fusing Tradition and Modernity</h2>
-                    <p>Traditional rammed earth naturally regulates temperature, while modern precast modules enhance stability and streamline construction. Serving as inner molds, these units shape varied wall thicknesses via their recessed and protruding surfaces, enabling large, smooth outer formwork. The method merges structural strength, efficiency, material performance, and cultural symbolism, creating a new tectonic expression that bridges tradition and modernity.</p>
-                    <img src="Screenshot 2025-09-01 105339.png" alt="Phased construction diagram">
+                    <h2>Facade Projecting Scenes of Life</h2>
+                    <p>An array of organic and diverse life scenes unfolds between facade layers of varying visual transparency, projecting nuanced relationships between public and private realms. From the exterior inward, the sequence progresses through public corridors, semi-transparent glass facades of residential units, and inter-floor openings that reveal the core public function volumes. With the ebb and flow of day and night and the movement of people, a cinematic montage of urban life continuously plays out across this facade.</p>
+                    <div class="image-grid-2-col">
+                        <img src="Screenshot 2025-09-06 100117.png" alt="Facade detail 1">
+                        <img src="Screenshot 2025-09-06 100129.png" alt="Facade detail 2">
+                    </div>
+                    <img src="Screenshot 2025-09-06 100054.png" alt="Facade projecting scenes of life">
                 </section>
 
                 <section class="project-section">
-                    <h2>Floor Plans and Section</h2>
-                    <p>Detailed floor plans for the first and second levels, and a cross-section view showing the relationship between the spaces and the thick earth walls.</p>
-                    <img src="Floor Plans and Section.png" alt="Detailed floor plans">
+                    <h2>Architectural Organs with Maximizing Public-Use</h2>
+                    <p>Architectural containers that carry urban public functions are layered, intertwined, and stacked at the center of the street block, making the public domain the core of urban architecture. This building type signifies a reversal, asserting a form of resistance-countering the privatized objects that occupy the city's ground.</p>
+                    <img src="Screenshot 2025-09-06 095956.png" alt="Architectural Organs">
+                    <img src="Screenshot 2025-09-06 100027.png" alt="Architectural Organs 2">
+                    <img src="Screenshot 2025-09-06 100158.png" alt="Floor plans">
                 </section>
+
             </div>
         </main>
     </div>

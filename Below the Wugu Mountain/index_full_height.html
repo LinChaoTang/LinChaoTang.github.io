@@ -20,41 +20,33 @@
             box-sizing: border-box;
         }
 
-        /* Left Navigation - Fixed */
+        /* Left Navigation - Unified Flexbox Layout */
         #left-nav {
             position: fixed;
-            top: 28px;
+            top: 32px;
             left: 30px;
             width: 220px;
             z-index: 10;
-        }
-
-        #left-nav .lct-title {
-            height: 30px;
-            font-size: 20px;
-            font-weight: 500;
-            color: rgba(0, 0, 0, 0.95);
-            letter-spacing: -0.2px;
-            line-height: 30px;
-            white-space: nowrap;
-        }
-
-        #left-nav .nav-links {
-            margin-top: 74px;
             display: flex;
             flex-direction: column;
-            align-items: flex-start;
-            gap: 27px;
         }
-        
-        #left-nav .nav-links a {
-            font-size: 15px;
-            letter-spacing: -0.15px;
+
+        /* Unified settings for all navigation items */
+        .nav-item {
+            height: 80px; /* Key: All items are 80px high for equal spacing */
             font-weight: 500;
             color: rgba(0, 0, 0, 0.95);
             cursor: pointer;
             transition: opacity 0.2s ease;
             text-decoration: none;
+            font-size: 15px; /* Default font size */
+            letter-spacing: -0.15px;
+        }
+
+        /* Style specifically for the LCT title */
+        .lct-title-style {
+            font-size: 20px; /* Enlarge font */
+            letter-spacing: -0.2px;
         }
 
         /* Right Sidebar - Fixed */
@@ -64,13 +56,13 @@
             top: 32px;
             right: 30px;
             z-index: 10;
-            height: 100%; /* Needed for absolute positioning of children */
+            display: flex;
+            flex-direction: column;
+            /* The gap is now controlled by the height of .meta-entry */
         }
 
         .meta-entry {
-            position: absolute; /* Restored for original layout */
-            left: 0;
-            width: 100%;
+            height: 80px; /* Set fixed height to create a consistent 80px rhythm */
             display: flex;
             flex-direction: column;
             align-items: flex-end;
@@ -98,10 +90,16 @@
 
         /* Main Content - Centered */
         #main-content {
-            width: 740px;
-            max-width: calc(100% - 560px);
+            /* 1. Set a maximum width, as you suggested. 1400px is a good starting point. */
+            max-width: 1400px; 
+
+            /* 2. On smaller screens, let the width be flexible, leaving some margin. 
+               This calculation respects the existing fixed sidebars. */
+            width: calc(100% - 560px); 
+
+            /* 3. Keep the content centered. */
             margin: 0 auto;
-            padding: 32px 0;
+                padding: 22px 0; /* Final adjustment for top baseline alignment */
             height: auto;
             overflow-y: visible;
         }
@@ -117,7 +115,7 @@
 
         .main-header h1 {
             font-size: 32px;
-            text-align: center;
+            text-align: center; /* Changed back to center */
             letter-spacing: -0.32px;
             line-height: 48px;
             color: rgba(0, 0, 0, 0.95);
@@ -126,7 +124,7 @@
 
         .main-header p {
             font-size: 20px;
-            text-align: center;
+            text-align: center; /* Changed back to center */
             letter-spacing: -0.20px;
             line-height: 30px;
             color: rgba(0, 0, 0, 0.4);
@@ -144,7 +142,7 @@
         .project-section h2 {
             align-self: stretch;
             font-size: 20px;
-            text-align: center;
+            text-align: center; /* Changed back to center */
             letter-spacing: -0.20px;
             line-height: 30px;
             color: rgba(0, 0, 0, 0.95);
@@ -152,15 +150,18 @@
         }
 
         .project-section p {
-            width: 651px;
-            max-width: 100%;
+            /* Let the width be flexible, occupying 100% of its container */
+            width: 100%;
+            /* Set a max-width for readability on large screens */
+            max-width: 700px;
+            /* Center the block when it reaches max-width */
+            margin: 0 auto;
             font-weight: 400;
             color: rgba(0, 0, 0, 0.95);
             font-size: 15px;
-            text-align: center;
+            text-align: left;
             letter-spacing: -0.15px;
             line-height: 22.5px;
-            margin: 0;
         }
 
         .project-section img {
@@ -168,12 +169,19 @@
             height: auto;
         }
 
+        .image-grid-2-col {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            width: 100%;
+        }
+
         /* Responsive Layout */
         @media (max-width: 1200px) {
             #left-nav, #right-sidebar {
                 position: static;
                 width: 100%;
-                max-width: 740px;
+                max-w: 740px;
                 margin: 20px auto;
                 padding: 0 20px;
                 height: auto;
@@ -202,11 +210,9 @@
     <div class="page-container">
         <!-- Left Navigation -->
         <nav id="left-nav">
-            <a href="/" style="text-decoration: none; color: inherit;"><div class="lct-title">LCT</div></a>
-            <div class="nav-links">
-                <a href="/">Projects</a>
-                <a href="#about">About</a>
-            </div>
+            <a href="../index.html" class="nav-item lct-title-style">LCT</a>
+            <a href="../index.html" class="nav-item">Projects</a>
+            <a href="#about" class="nav-item">About</a>
         </nav>
 
         <!-- Right Sidebar -->

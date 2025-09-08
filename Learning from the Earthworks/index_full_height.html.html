@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Learning from the Earthworks - Thickness Meets Temperature</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css?family=Inter:500" rel="stylesheet">
+    <style>
+        /* Basic Reset & Font */
+        html, body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Inter', Helvetica, sans-serif;
+            background-color: #fff;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        /* Left Navigation - Unified Flexbox Layout */
+        #left-nav {
+            position: fixed;
+            top: 32px;
+            left: 30px;
+            width: 220px;
+            z-index: 10;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Unified settings for all navigation items */
+        .nav-item {
+            height: 80px; /* Key: All items are 80px high for equal spacing */
+            font-weight: 500;
+            color: rgba(0, 0, 0, 0.95);
+            cursor: pointer;
+            transition: opacity 0.2s ease;
+            text-decoration: none;
+            font-size: 15px; /* Default font size */
+            letter-spacing: -0.15px;
+        }
+
+        /* Style specifically for the LCT title */
+        .lct-title-style {
+            font-size: 20px; /* Enlarge font */
+            letter-spacing: -0.2px;
+        }
+
+        /* Right Sidebar - Fixed */
+        #right-sidebar {
+            position: fixed;
+            width: 220px;
+            top: 32px;
+            right: 30px;
+            z-index: 10;
+            display: flex;
+            flex-direction: column;
+            /* The gap is now controlled by the height of .meta-entry */
+        }
+
+        .meta-entry {
+            height: 80px; /* Set fixed height to create a consistent 80px rhythm */
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            gap: 7px;
+        }
+
+        .meta-entry dt {
+            align-self: stretch;
+            font-weight: 500;
+            color: rgba(0, 0, 0, 0.95);
+            font-size: 15px;
+            text-align: right;
+            letter-spacing: -0.15px;
+        }
+
+        .meta-entry dd {
+            align-self: stretch;
+            margin: 0;
+            font-weight: 500;
+            color: rgba(0, 0, 0, 0.4);
+            font-size: 15px;
+            text-align: right;
+            letter-spacing: -0.15px;
+        }
+
+        /* Main Content - Centered */
+        #main-content {
+            /* 1. Set a maximum width, as you suggested. 1400px is a good starting point. */
+            max-width: 1400px; 
+
+            /* 2. On smaller screens, let the width be flexible, leaving some margin. 
+               This calculation respects the existing fixed sidebars. */
+            width: calc(100% - 560px); 
+
+            /* 3. Keep the content centered. */
+            margin: 0 auto;
+                padding: 22px 0; /* Final adjustment for top baseline alignment */
+            height: auto;
+            overflow-y: visible;
+        }
+
+        #main-content::-webkit-scrollbar {
+            display: none;
+        }
+
+        .main-header {
+            width: 100%;
+            margin: 0 auto 88px auto;
+        }
+
+        .main-header h1 {
+            font-size: 32px;
+            text-align: center; /* Changed back to center */
+            letter-spacing: -0.32px;
+            line-height: 48px;
+            color: rgba(0, 0, 0, 0.95);
+            margin: 0;
+        }
+
+        .main-header p {
+            font-size: 20px;
+            text-align: center; /* Changed back to center */
+            letter-spacing: -0.20px;
+            line-height: 30px;
+            color: rgba(0, 0, 0, 0.4);
+            margin: 0;
+        }
+
+        .project-section {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 24px;
+            margin-bottom: 80px;
+        }
+
+        .project-section h2 {
+            align-self: stretch;
+            font-size: 20px;
+            text-align: center; /* Changed back to center */
+            letter-spacing: -0.20px;
+            line-height: 30px;
+            color: rgba(0, 0, 0, 0.95);
+            margin: 0;
+        }
+
+        .project-section p {
+            /* Let the width be flexible, occupying 100% of its container */
+            width: 100%;
+            /* Set a max-width for readability on large screens */
+            max-width: 700px;
+            /* Center the block when it reaches max-width */
+            margin: 0 auto;
+            font-weight: 400;
+            color: rgba(0, 0, 0, 0.95);
+            font-size: 15px;
+            text-align: left;
+            letter-spacing: -0.15px;
+            line-height: 22.5px;
+        }
+
+        .project-section img {
+            width: 100%;
+            height: auto;
+        }
+
+        .image-grid-2-col {
+            column-count: 2;
+            column-gap: 20px;
+            width: 100%;
+        }
+
+        .image-grid-2-col > img {
+            break-inside: avoid;
+            margin-bottom: 20px;
+            width: 100%;
+        }
+
+        /* Responsive Layout */
+        @media (max-width: 1200px) {
+            #left-nav, #right-sidebar {
+                position: static;
+                width: 100%;
+                max-w: 740px;
+                margin: 20px auto;
+                padding: 0 20px;
+                height: auto;
+            }
+
+            #right-sidebar .meta-entry {
+                position: static; /* Un-fix for mobile */
+                align-items: flex-start;
+                text-align: left;
+                margin-bottom: 20px;
+            }
+
+            #right-sidebar .meta-entry dt, #right-sidebar .meta-entry dd {
+                text-align: left;
+            }
+
+            #main-content {
+                width: 100%;
+                max-width: 100%;
+                padding: 20px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .image-grid-2-col {
+                column-count: 1;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="page-container">
+        <nav id="left-nav">
+            <a href="../index.html" class="nav-item lct-title-style">LCT</a>
+            <a href="../index.html" class="nav-item">Projects</a>
+            <a href="#about" class="nav-item">About</a>
+        </nav>
+
+        <aside id="right-sidebar">
+            <div class="meta-entry"><dt>Year</dt><dd>2019</dd></div>
+            <div class="meta-entry"><dt>Type</dt><dd>Studio Project (Group research/Individual Work)</dd></div>
+            <div class="meta-entry"><dt>Location</dt><dd>Turpan, China</dd></div>
+            <div class="meta-entry"><dt>Instructor</dt><dd>Chia-Shun Liao</dd></div>
+        </aside>
+
+        <main id="main-content">
+            <header class="main-header">
+                <h1>Learning from the Earthworks</h1>
+                <p>Thickness Meets Temperature</p>
+            </header>
+
+            <section class="project-section">
+                    <h2>How Does Climate Become Architecture?</h2>
+                    <p>In modern construction logic's pursuit of building performance, tactile experience and microclimate perception of the human body are often overlooked. This project reexamines the embodied wisdom in traditional rammed earth architecture, studying how it creates rich tactile experiences and comfortable microclimates through material properties and constructional details. Taking Turpan region as the site, through precise analysis of temperaturetime curves and integration of modern prefabrication technology with traditional methods, the project develops a new type of sustainable architecture that responds to human sensory needs at different scales. From the tactile properties of materials to the regulation of spatial microclimates, it reestablishes the direct connection between architecture and the user's body.</p>
+                    <img src="Screenshot 2025-09-01 104316.png" alt="How Does Climate Become Architecture? Image">
+                </section>
+
+                <section class="project-section">
+                    <h2>Index of Global Climate and Vernacular Architecture</h2>
+                    <p>This studio begins with the relationship between climate and architectural typologies. It identifies representative traditional architectural samples from global climatic typologies and categorizes them based on the distribution of building forms, materials, and climatic conditions such as temperature and humidity. This project focuses on thick walls as a point of entry, further investigating the scale of thick-wall architecture, materials, and their adaptation to climate change.</p>
+                    <img src="Screenshot 2025-09-01 104338.png" alt="Index of Global Climate and Vernacular Architecture Image">
+                </section>
+
+                <section class="project-section">
+                    <h2>Traditional / Modern Approach</h2>
+                    <p>Rammed earth architecture embodies ecological, corporeal, and cultural symbolism, shaping organic traditional settlements; modern architecture is characterized by high productivity, efficiency, and dense planning. The intersection of these two forms represents a sustainable path for the future of architecture and urban development.</p>
+                    <img src="Screenshot 2025-09-01 104417.png" alt="Traditional / Modern Approach Image">
+                </section>
+
+                <section class="project-section">
+                    <h2>Tectonic of Rammed Earth Architecture</h2>
+                    <p>From a technical perspective, earth has a high specific heat capacity, enabling passive thermal regulation to control indoor temperatures. Once compacted and air-dried, rammed earth also offers structural stability and weather resistance. On a cultural level, earthworks provide tactile experiences through material texture, as well as temperature and humidity sensations.</p>
+                    <img src="Screenshot 2025-09-07 214056.png" alt="Tectonic of Rammed Earth Architecture Image">
+                </section>
+
+                <section class="project-section">
+                    <h2>A Tectonic Fusing Tradition and Modernity</h2>
+                    <p>Traditional rammed earth naturally regulates temperature, while modern precast modules enhance stability and streamline construction. Serving as inner molds, these units shape varied wall thicknesses via their recessed and protruding surfaces, enabling large, smooth outer formwork. The method merges structural strength, efficiency, material performance, and cultural symbolism, creating a new tectonic expression that bridges tradition and modernity.</p>
+                    <img src="Screenshot 2025-09-07 215203.png" alt="A Tectonic Fusing Tradition and Modernity Image 1">
+                    <img src="Screenshot 2025-09-07 215305.png" alt="A Tectonic Fusing Tradition and Modernity Image 2">
+                </section>
+        </main>
+    </div>
+</body>
+</html>

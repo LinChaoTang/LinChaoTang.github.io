@@ -192,15 +192,72 @@
             height: 100%;
         }
 
+        /* --- Accordion Styles --- */
+        .info-accordion {
+            display: none; /* Hidden on desktop */
+        }
+
+        .info-accordion summary {
+            list-style: none; /* Remove default marker */
+            align-items: center;
+        }
+        .info-accordion summary::-webkit-details-marker {
+            display: none; /* Hide marker for Safari */
+        }
+
+        .arrow {
+            display: inline-block;
+            margin-left: 10px; /* Space between text and arrow */
+            width: 0;
+            height: 0;
+            border-top: 5px solid transparent;
+            border-bottom: 5px solid transparent;
+            border-left: 6px solid rgba(0, 0, 0, 0.95);
+            transition: transform 0.2s ease;
+        }
+
+        .info-accordion[open] > summary .arrow {
+            transform: rotate(90deg);
+        }
+
+        .accordion-content {
+            padding: 0 0 0 15px; /* Reset padding */
+            margin-top: -20px; /* Pull content up to counteract summary height */
+        }
+
+        .accordion-content .meta-entry {
+            height: auto;
+            align-items: flex-start;
+            gap: 5px;
+        }
+
+        /* Add margin to subsequent items for spacing */
+        .accordion-content .meta-entry + .meta-entry {
+            margin-top: 20px;
+        }
+
+        .accordion-content .meta-entry dt,
+        .accordion-content .meta-entry dd {
+            text-align: left;
+        }
+
         /* Responsive Layout */
         @media (max-width: 1200px) {
             #left-nav, #right-sidebar {
                 position: static;
                 width: 100%;
                 max-w: 740px;
-                margin: 20px auto;
-                padding: 0 20px;
+                margin: 32px auto;
+                padding: 0 30px;
                 height: auto;
+            }
+
+            #right-sidebar {
+                display: none; /* Hide original sidebar on mobile */
+            }
+
+            .info-accordion {
+                display: block; /* Show accordion on mobile */
             }
 
             #right-sidebar .meta-entry {
@@ -229,6 +286,19 @@
             <a href="../index.html" class="nav-item lct-title-style">LCT</a>
             <a href="../index.html" class="nav-item">Projects</a>
             <a href="../About.html" class="nav-item">About</a>
+            <details class="info-accordion">
+                <summary class="nav-item">
+                    Details
+                    <span class="arrow"></span>
+                </summary>
+                <div class="accordion-content">
+                    <div class="meta-entry" style="top: 0px;"><dt>Year</dt><dd>2025</dd></div>
+            <div class="meta-entry" style="top: 80px;"><dt>Type</dt><dd>Individual Work</dd></div>
+            <div class="meta-entry" style="top: 160px;"><dt>Duration</dt><dd>2025.08.07 16:50:20 to 17:31:05</dd></div>
+            <div class="meta-entry" style="top: 240px;"><dt>Coordinates</dt><dd>40°48'37.1"N 73°57'42.8"W to 40°48'39.0"N 73°57'55.5"W</dd></div>
+            <div class="meta-entry" style="top: 320px;"><dt>Metrics</dt><dd>465 meters, 632 steps, 632 (my) foot, 632 sheets, 4.55 centimeters, 259 kilograms</dd></div>
+                </div>
+            </details>
         </nav>
 
         <!-- Right Sidebar -->

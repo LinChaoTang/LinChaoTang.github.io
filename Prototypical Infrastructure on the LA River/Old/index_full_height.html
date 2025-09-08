@@ -187,71 +187,6 @@
             margin-bottom: 20px;
             width: 100%;
         }
-        
-        .video-wrapper {
-            position: relative;
-            padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
-            height: 0;
-            width: 100%;
-            overflow: hidden;
-        }
-
-        .video-wrapper iframe {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-        }
-
-        /* --- Accordion Styles --- */
-        .info-accordion {
-            display: none; /* Hidden on desktop */
-        }
-
-        .info-accordion summary {
-            list-style: none; /* Remove default marker */
-            align-items: center;
-        }
-        .info-accordion summary::-webkit-details-marker {
-            display: none; /* Hide marker for Safari */
-        }
-
-        .arrow {
-            display: inline-block;
-            margin-left: 10px; /* Space between text and arrow */
-            width: 0;
-            height: 0;
-            border-top: 5px solid transparent;
-            border-bottom: 5px solid transparent;
-            border-left: 6px solid rgba(0, 0, 0, 0.95);
-            transition: transform 0.2s ease;
-        }
-
-        .info-accordion[open] > summary .arrow {
-            transform: rotate(90deg);
-        }
-
-        .accordion-content {
-            padding: 0 0 0 15px; /* Reset padding */
-            margin-top: -20px; /* Pull content up to counteract summary height */
-        }
-
-        .accordion-content .meta-entry {
-            height: auto;
-            align-items: flex-start;
-            gap: 5px;
-        }
-
-        /* Add margin to subsequent items for spacing */
-        .accordion-content .meta-entry + .meta-entry {
-            margin-top: 20px;
-        }
-
-        .accordion-content .meta-entry dt,
-        .accordion-content .meta-entry dd {
-            text-align: left;
-        }
 
         /* Responsive Layout */
         @media (max-width: 1200px) {
@@ -259,21 +194,13 @@
                 position: static;
                 width: 100%;
                 max-w: 740px;
-                margin: 32px auto;
-                padding: 0 30px;
+                margin: 20px auto;
+                padding: 0 20px;
                 height: auto;
             }
 
-            #right-sidebar {
-                display: none; /* Hide original sidebar on mobile */
-            }
-
-            .info-accordion {
-                display: block; /* Show accordion on mobile */
-            }
-
             #right-sidebar .meta-entry {
-                position: static;
+                position: static; /* Un-fix for mobile */
                 align-items: flex-start;
                 text-align: left;
                 margin-bottom: 20px;
@@ -303,18 +230,6 @@
             <a href="../index.html" class="nav-item lct-title-style">LCT</a>
             <a href="../index.html" class="nav-item">Projects</a>
             <a href="../About.html" class="nav-item">About</a>
-            <details class="info-accordion">
-                <summary class="nav-item">
-                    Details
-                    <span class="arrow"></span>
-                </summary>
-                <div class="accordion-content">
-                    <div class="meta-entry"><dt>Year</dt><dd>2025</dd></div>
-                    <div class="meta-entry"><dt>Type</dt><dd>Studio Project (Individual Work)</dd></div>
-                    <div class="meta-entry"><dt>Location</dt><dd>Los Angeles, USA</dd></div>
-                    <div class="meta-entry"><dt>Instructor</dt><dd></dd></div>
-                </div>
-            </details>
         </nav>
 
         <aside id="right-sidebar">
@@ -359,7 +274,7 @@ Infrastructural Bridge: A bridge over the river with integrated water tanks that
 
                 <section class="project-section">
                     <div class="video-wrapper">
-                        <iframe src="https://www.youtube.com/embed/7THXU6lFbzA?si=QXQIrdpturJnl4Sz" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                        <iframe width="560" height="315" src="https://www.youtube.com/embed/7THXU6lFbzA?si=QXQIrdpturJnl4Sz" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
                     </div>
                 </section>
 

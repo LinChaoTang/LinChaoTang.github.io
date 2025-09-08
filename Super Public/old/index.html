@@ -150,15 +150,18 @@
         }
 
         .project-section p {
-            width: 651px;
-            max-width: 100%;
+            /* Let the width be flexible, occupying 100% of its container */
+            width: 100%;
+            /* Set a max-width for readability on large screens */
+            max-width: 700px;
+            /* Center the block when it reaches max-width */
+            margin: 0 auto;
             font-weight: 400;
             color: rgba(0, 0, 0, 0.95);
             font-size: 15px;
-            text-align: left; /* Keep paragraphs left-aligned */
+            text-align: left;
             letter-spacing: -0.15px;
             line-height: 22.5px;
-            margin: 0;
         }
 
         .project-section img {
@@ -167,9 +170,14 @@
         }
 
         .image-grid-2-col {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 20px;
+            column-count: 2;
+            column-gap: 20px;
+            width: 100%;
+        }
+
+        .image-grid-2-col > img {
+            break-inside: avoid;
+            margin-bottom: 20px;
             width: 100%;
         }
 
@@ -201,13 +209,19 @@
                 padding: 20px;
             }
         }
+
+        @media (max-width: 768px) {
+            .image-grid-2-col {
+                column-count: 1;
+            }
+        }
     </style>
 </head>
 <body>
     <div class="page-container">
         <nav id="left-nav">
-            <a href="/" class="nav-item lct-title-style">LCT</a>
-            <a href="/" class="nav-item">Projects</a>
+            <a href="../index.html" class="nav-item lct-title-style">LCT</a>
+            <a href="../index.html" class="nav-item">Projects</a>
             <a href="#about" class="nav-item">About</a>
         </nav>
 

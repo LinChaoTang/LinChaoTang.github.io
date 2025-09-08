@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Within the Community</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css?family=Inter:500" rel="stylesheet">
+    <style>
+        /* Basic Reset & Font */
+        html, body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Inter', Helvetica, sans-serif;
+            background-color: #fff;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        /* Left Navigation - Unified Flexbox Layout */
+        #left-nav {
+            position: fixed;
+            top: 32px;
+            left: 30px;
+            width: 220px;
+            z-index: 10;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Unified settings for all navigation items */
+        .nav-item {
+            height: 80px; /* Key: All items are 80px high for equal spacing */
+            font-weight: 500;
+            color: rgba(0, 0, 0, 0.95);
+            cursor: pointer;
+            transition: opacity 0.2s ease;
+            text-decoration: none;
+            font-size: 15px; /* Default font size */
+            letter-spacing: -0.15px;
+        }
+
+        /* Style specifically for the LCT title */
+        .lct-title-style {
+            font-size: 20px; /* Enlarge font */
+            letter-spacing: -0.2px;
+        }
+
+        /* Right Sidebar - Fixed */
+        #right-sidebar {
+            position: fixed;
+            width: 220px;
+            top: 32px;
+            right: 30px;
+            z-index: 10;
+            display: flex;
+            flex-direction: column;
+            /* The gap is now controlled by the height of .meta-entry */
+        }
+
+        .meta-entry {
+            height: 80px; /* Set fixed height to create a consistent 80px rhythm */
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            gap: 7px;
+        }
+
+        .meta-entry dt {
+            align-self: stretch;
+            font-weight: 500;
+            color: rgba(0, 0, 0, 0.95);
+            font-size: 15px;
+            text-align: right;
+            letter-spacing: -0.15px;
+        }
+
+        .meta-entry dd {
+            align-self: stretch;
+            margin: 0;
+            font-weight: 500;
+            color: rgba(0, 0, 0, 0.4);
+            font-size: 15px;
+            text-align: right;
+            letter-spacing: -0.15px;
+        }
+
+        /* Main Content - Centered */
+        #main-content {
+            /* 1. Set a maximum width, as you suggested. 1400px is a good starting point. */
+            max-width: 1400px; 
+
+            /* 2. On smaller screens, let the width be flexible, leaving some margin. 
+               This calculation respects the existing fixed sidebars. */
+            width: calc(100% - 560px); 
+
+            /* 3. Keep the content centered. */
+            margin: 0 auto;
+                padding: 22px 0; /* Final adjustment for top baseline alignment */
+            height: auto;
+            overflow-y: visible;
+        }
+
+        #main-content::-webkit-scrollbar {
+            display: none;
+        }
+
+        .main-header {
+            width: 100%;
+            margin: 0 auto 88px auto;
+        }
+
+        .main-header h1 {
+            font-size: 32px;
+            text-align: center; /* Changed back to center */
+            letter-spacing: -0.32px;
+            line-height: 48px;
+            color: rgba(0, 0, 0, 0.95);
+            margin: 0;
+        }
+
+        .main-header p {
+            font-size: 20px;
+            text-align: center; /* Changed back to center */
+            letter-spacing: -0.20px;
+            line-height: 30px;
+            color: rgba(0, 0, 0, 0.4);
+            margin: 0;
+        }
+
+        .project-section {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 24px;
+            margin-bottom: 80px;
+        }
+
+        .project-section h2 {
+            align-self: stretch;
+            font-size: 20px;
+            text-align: center; /* Changed back to center */
+            letter-spacing: -0.20px;
+            line-height: 30px;
+            color: rgba(0, 0, 0, 0.95);
+            margin: 0;
+        }
+
+        .project-section p {
+            /* Let the width be flexible, occupying 100% of its container */
+            width: 100%;
+            /* Set a max-width for readability on large screens */
+            max-width: 700px;
+            /* Center the block when it reaches max-width */
+            margin: 0 auto;
+            font-weight: 400;
+            color: rgba(0, 0, 0, 0.95);
+            font-size: 15px;
+            text-align: left;
+            letter-spacing: -0.15px;
+            line-height: 22.5px;
+        }
+
+        .project-section img {
+            width: 100%;
+            height: auto;
+        }
+
+        .half-width-image {
+            width: 50% !important; /* Half size */
+            margin-left: auto; /* Center horizontally */
+            margin-right: auto; /* Center horizontally */
+            display: block; /* Ensure margin auto works */
+        }
+
+        .image-grid-2-col {
+            column-count: 2;
+            column-gap: 20px;
+            width: 100%;
+        }
+
+        .image-grid-2-col > img {
+            break-inside: avoid;
+            margin-bottom: 20px;
+            width: 100%;
+        }
+
+        /* Responsive Layout */
+        @media (max-width: 1200px) {
+            #left-nav, #right-sidebar {
+                position: static;
+                width: 100%;
+                max-w: 740px;
+                margin: 20px auto;
+                padding: 0 20px;
+                height: auto;
+            }
+
+            #right-sidebar .meta-entry {
+                position: static; /* Un-fix for mobile */
+                align-items: flex-start;
+                text-align: left;
+                margin-bottom: 20px;
+            }
+
+            #right-sidebar .meta-entry dt, #right-sidebar .meta-entry dd {
+                text-align: left;
+            }
+
+            #main-content {
+                width: 100%;
+                max-width: 100%;
+                padding: 20px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .image-grid-2-col {
+                column-count: 1;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="page-container">
+        <nav id="left-nav">
+            <a href="../index.html" class="nav-item lct-title-style">LCT</a>
+            <a href="../index.html" class="nav-item">Projects</a>
+            <a href="#about" class="nav-item">About</a>
+        </nav>
+
+        <aside id="right-sidebar">
+            <div class="meta-entry"><dt>Year</dt><dd>2016</dd></div>
+            <div class="meta-entry"><dt>Type</dt><dd>Studio Project (Individual Work)</dd></div>
+            <div class="meta-entry"><dt>Location</dt><dd>Taichung, Taiwan</dd></div>
+            <div class="meta-entry"><dt>Instructor</dt><dd>Po-Jen Cheng</dd></div>
+            <div class="meta-entry"><dt>Key themes</dt><dd>Community Integration, Programmatic Flexibility, Spatial Ambiguity</dd></div>
+        </aside>
+
+        <main id="main-content">
+            <header class="main-header">
+                <h1>Within the Community</h1>
+                <p>-Blank Carrier to be Occupied</p>
+            </header>
+
+            <div class="sections-wrapper">
+
+                <section class="project-section">
+                    <h2>How Does Architecture Shape Neighborhood Atmosphere?</h2>
+                    <p>In relation to weakness, our definition of strength is a spatial clear-cut that
+appears hidden. This project explores how architectural spaces can carry
+various functions and activities while allowing different activities to interact
+and overlap within the same carrier. The resulting spatial layering creates
+a sense of ambiguity where spaces seem to occupy each other. Through
+vertical organization and careful manipulation of levels, the design creates
+distinct spatial conditions while maintaining visual connections.
+The architecture becomes a framework that orchestrates public and
+private realms - each space flows into the next while retaining its individual
+character. This spatial strategy responds to urban community dynamics
+where privacy and publicness need to be delicately balanced, creating an
+urban interface that supports both collective and individual experiences.</p>
+                </section>
+
+                <section class="project-section">
+                    <h2>Fluid Voids</h2>
+                    <p>The unidirectional folded plate structure guides the flow of
+movement and visual experience, while the gaps between
+the plates allow sound and light to transmit between
+floors. At the urban scale, the building acts as an openended
+structure, seamlessly merging with the city fabric and
+fostering dynamic spatial connections.</p>
+                    <img src="Screenshot 2025-09-07 175403.png" alt="Within the Community Image 1">
+                </section>
+
+                <section class="project-section">
+                    <h2>Sectional Elevation</h2>
+                    <p>From the perspective of the alleys, the building’s elevation
+reveals the ever-changing movement of its interior spaces
+across day and night. This transparency connects the life of
+the neighborhood, allowing diverse community activities to
+flow fluidly between the inside and outside spaces.</p>
+                    <img src="Screenshot 2025-09-07 175959.png" alt="Within the Community Image 2">
+                    <img src="Screenshot 2025-09-07 180107.png" alt="Within the Community Image 3">
+                    <img src="Screenshot 2025-09-07 180125.png" alt="Within the Community Image 4">
+                    <img src="Screenshot 2025-09-07 180153.png" alt="Within the Community Image 5">
+                    <img src="Screenshot 2025-09-07 180220.png" alt="Within the Community Image 6">
+                </section>
+
+            </div>
+        </main>
+    </div>
+</body>
+</html>

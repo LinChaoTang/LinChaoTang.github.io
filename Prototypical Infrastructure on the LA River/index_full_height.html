@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prototypical Infrastructure on the LA River</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css?family=Inter:500" rel="stylesheet">
+    <style>
+        /* Basic Reset & Font */
+        html, body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Inter', Helvetica, sans-serif;
+            background-color: #fff;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        /* Left Navigation - Unified Flexbox Layout */
+        #left-nav {
+            position: fixed;
+            top: 32px;
+            left: 30px;
+            width: 220px;
+            z-index: 10;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Unified settings for all navigation items */
+        .nav-item {
+            height: 80px; /* Key: All items are 80px high for equal spacing */
+            font-weight: 500;
+            color: rgba(0, 0, 0, 0.95);
+            cursor: pointer;
+            transition: opacity 0.2s ease;
+            text-decoration: none;
+            font-size: 15px; /* Default font size */
+            letter-spacing: -0.15px;
+        }
+
+        /* Style specifically for the LCT title */
+        .lct-title-style {
+            font-size: 20px; /* Enlarge font */
+            letter-spacing: -0.2px;
+        }
+
+        /* Right Sidebar - Fixed */
+        #right-sidebar {
+            position: fixed;
+            width: 220px;
+            top: 32px;
+            right: 30px;
+            z-index: 10;
+            display: flex;
+            flex-direction: column;
+            /* The gap is now controlled by the height of .meta-entry */
+        }
+
+        .meta-entry {
+            height: 80px; /* Set fixed height to create a consistent 80px rhythm */
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            gap: 7px;
+        }
+
+        .meta-entry dt {
+            align-self: stretch;
+            font-weight: 500;
+            color: rgba(0, 0, 0, 0.95);
+            font-size: 15px;
+            text-align: right;
+            letter-spacing: -0.15px;
+        }
+
+        .meta-entry dd {
+            align-self: stretch;
+            margin: 0;
+            font-weight: 500;
+            color: rgba(0, 0, 0, 0.4);
+            font-size: 15px;
+            text-align: right;
+            letter-spacing: -0.15px;
+        }
+
+        /* Main Content - Centered */
+        #main-content {
+            /* 1. Set a maximum width, as you suggested. 1400px is a good starting point. */
+            max-width: 1400px; 
+
+            /* 2. On smaller screens, let the width be flexible, leaving some margin. 
+               This calculation respects the existing fixed sidebars. */
+            width: calc(100% - 560px); 
+
+            /* 3. Keep the content centered. */
+            margin: 0 auto;
+                padding: 22px 0; /* Final adjustment for top baseline alignment */
+            height: auto;
+            overflow-y: visible;
+        }
+
+        #main-content::-webkit-scrollbar {
+            display: none;
+        }
+
+        .main-header {
+            width: 100%;
+            margin: 0 auto 88px auto;
+        }
+
+        .main-header h1 {
+            font-size: 32px;
+            text-align: center; /* Changed back to center */
+            letter-spacing: -0.32px;
+            line-height: 48px;
+            color: rgba(0, 0, 0, 0.95);
+            margin: 0;
+        }
+
+        .main-header p {
+            font-size: 20px;
+            text-align: center; /* Changed back to center */
+            letter-spacing: -0.20px;
+            line-height: 30px;
+            color: rgba(0, 0, 0, 0.4);
+            margin: 0;
+        }
+
+        .project-section {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 24px;
+            margin-bottom: 80px;
+        }
+
+        .project-section h2 {
+            align-self: stretch;
+            font-size: 20px;
+            text-align: center; /* Changed back to center */
+            letter-spacing: -0.20px;
+            line-height: 30px;
+            color: rgba(0, 0, 0, 0.95);
+            margin: 0;
+        }
+
+        .project-section p {
+            /* Let the width be flexible, occupying 100% of its container */
+            width: 100%;
+            /* Set a max-width for readability on large screens */
+            max-width: 700px;
+            /* Center the block when it reaches max-width */
+            margin: 0 auto;
+            font-weight: 400;
+            color: rgba(0, 0, 0, 0.95);
+            font-size: 15px;
+            text-align: left;
+            letter-spacing: -0.15px;
+            line-height: 22.5px;
+        }
+
+        .project-section img {
+            width: 100%;
+            height: auto;
+        }
+
+        .half-width-image {
+            width: 50% !important; /* Half size */
+            margin-left: auto; /* Center horizontally */
+            margin-right: auto; /* Center horizontally */
+            display: block; /* Ensure margin auto works */
+        }
+
+        .image-grid-2-col {
+            column-count: 2;
+            column-gap: 20px;
+            width: 100%;
+        }
+
+        .image-grid-2-col > img {
+            break-inside: avoid;
+            margin-bottom: 20px;
+            width: 100%;
+        }
+
+        /* Responsive Layout */
+        @media (max-width: 1200px) {
+            #left-nav, #right-sidebar {
+                position: static;
+                width: 100%;
+                max-w: 740px;
+                margin: 20px auto;
+                padding: 0 20px;
+                height: auto;
+            }
+
+            #right-sidebar .meta-entry {
+                position: static; /* Un-fix for mobile */
+                align-items: flex-start;
+                text-align: left;
+                margin-bottom: 20px;
+            }
+
+            #right-sidebar .meta-entry dt, #right-sidebar .meta-entry dd {
+                text-align: left;
+            }
+
+            #main-content {
+                width: 100%;
+                max-width: 100%;
+                padding: 20px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .image-grid-2-col {
+                column-count: 1;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="page-container">
+        <nav id="left-nav">
+            <a href="../index.html" class="nav-item lct-title-style">LCT</a>
+            <a href="../index.html" class="nav-item">Projects</a>
+            <a href="#about" class="nav-item">About</a>
+        </nav>
+
+        <aside id="right-sidebar">
+            <div class="meta-entry"><dt>Year</dt><dd>2025</dd></div>
+            <div class="meta-entry"><dt>Type</dt><dd>Studio Project (Individual Work)</dd></div>
+            <div class="meta-entry"><dt>Location</dt><dd>Los Angeles, USA</dd></div>
+            <div class="meta-entry"><dt>Instructor</dt><dd></dd></div>
+        </aside>
+
+        <main id="main-content">
+            <header class="main-header">
+                <h1>Prototypical Infrastructure on the LA River</h1>
+                <p>IN THE AGE OF THE PYROCENE</p>
+            </header>
+
+            <div class="sections-wrapper">
+
+                <section class="project-section">
+                    <p>In an era of increasing wildfire threats, a period defined by fire and combustion that can be called the Pyrocene, this project reimagines the Los Angeles River as a critical line of defense and a vital community asset. It proposes interventions at the Wildland-Urban Interface (WUI), creating dual-purpose infrastructure that provides engaging public space for daily life. These spaces are designed to foster new community rituals  while offering essential water resources and shelter during a fire.</p>
+                    <img src="Screenshot 2025-09-07 153631.png" alt="Prototypical Infrastructure on the LA River Image 1">
+                </section>
+
+                <section class="project-section">
+                    <h2>Analysis & Strategy</h2>
+                    <p>The project directly confronts the shifting wildfire-urban boundary and the destructive fire-rebuild cycle that impacts residents. Sited in the high-risk Glendale area, the strategy is to create prototypes that function as public amenities in normal times and as life-saving infrastructure during a fire emergency.</p>
+                    <img src="Untitled-3.png" alt="Prototypical Infrastructure on the LA River Image 2">
+                    <img src="Untitled-31.png" alt="Prototypical Infrastructure on the LA River Image 3">
+                </section>
+
+                <section class="project-section">
+                    <h2>Three Fire-Ready Prototypes for the WUI</h2>
+                    <p>These projects propose public programs that occupy the boundaries of proposed firebreaks or buffer zones:
+
+Reservoir Hub: An expanded reservoir featuring a public amphitheater that converts into a community fire shelter and a strategic water distribution point.
+
+Community Pool & Cistern: A neighborhood swimming pool that serves as a recreational hub while its water volume acts as a ready reserve for firefighting.
+
+Infrastructural Bridge: A bridge over the river with integrated water tanks that support a park while storing vast amounts of water for an emergency fire response.</p>
+                    <img src="AAD Moon Eddie Tom Norman SU25 Drawing.png" alt="Prototypical Infrastructure on the LA River Image 4">
+                    <img src="Screenshot 2025-09-07 153905.png" alt="Prototypical Infrastructure on the LA River Image 5">
+                </section>
+
+                <section class="project-section">
+                    <div class="video-wrapper">
+                        <iframe width="560" height="315" src="https://www.youtube.com/embed/7THXU6lFbzA?si=QXQIrdpturJnl4Sz" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                    </div>
+                </section>
+
+                <section class="project-section">
+                    <h2>LA River in the Future</h2>
+                    <p>Together, these prototypes create an integrated water system for fire defense. Rather than trying to restore a wild state that no longer exists, the project seeks to "recompose" the LA River. It transforms it from a simple channel into a resilient public landscape built on principles of solidarity and reciprocity , actively fostering social resilience  to protect its community in the face of wildfire.</p>
+                    <img class="half-width-image" src="AAD Moon Eddie Tom Norman SU25 System.png" alt="Prototypical Infrastructure on the LA River Image 6">
+                </section>
+
+            <section class="project-section">
+                    <img src="Screenshot 2025-09-07 165331.png" alt="Prototypical Infrastructure on the LA River Image 7">
+                </section>
+
+            </div>
+        </main>
+    </div>
+</body>
+</html>

@@ -1,0 +1,12 @@
+請為我建立一個新的專案網頁。
+
+  專案資料夾位於：[請在此處提供專案資料夾的絕對路徑，例如：C:\Users\lct19\Documents\LCT Website_new\新專案名稱]
+
+  請參考以下規則生成網頁：
+  - 網頁格式應與現有專案頁面（例如 C:\Users\lct19\Documents\LCT Website_new\Super Public\index.html）一致。
+  - 網頁檔案名應為 index_full_height.html。
+  - 網頁內容（標題、內文、圖片順序）請從專案資料夾內的 New Text Document.txt 檔案中提取。
+  - 圖片路徑請使用相對路徑，並假設圖片與 index_full_height.html 在同一資料夾。
+  - 右側邊欄的元數據（Year, Type, Location, Instructor 等）請盡可能從 New Text Document.txt
+  或專案名稱中推斷，若無法推斷則使用預設值或留空。
+  - 網頁建立後，請儲存在本地專案資料夾中，暫不進行上傳。

@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LCT</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css?family=Inter:500" rel="stylesheet">
+    <style>
+        /* Basic Reset & Font */
+        body, html {
+            margin: 0;
+            padding: 0;
+            font-family: 'Inter', Helvetica, sans-serif;
+            background-color: #fff;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        /* Left Navigation - Unified Flexbox Layout */
+        #left-nav {
+            position: fixed;
+            top: 32px;
+            left: 30px;
+            width: 220px;
+            z-index: 10;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Unified settings for all navigation items */
+        .nav-item {
+            height: 80px; /* Key: All items are 80px high for equal spacing */
+            font-weight: 500;
+            color: rgba(0, 0, 0, 0.95);
+            cursor: pointer;
+            transition: opacity 0.2s ease;
+            text-decoration: none;
+            font-size: 15px; /* Default font size */
+            letter-spacing: -0.15px;
+        }
+
+        /* Style specifically for the LCT title */
+        .lct-title-style {
+            font-size: 20px; /* Enlarge font */
+            letter-spacing: -0.2px;
+        }
+
+        /* Right Placeholder Sidebar - Fixed */
+        .right-sidebar-placeholder {
+            position: fixed;
+            top: 28px;
+            right: 30px;
+            width: 220px;
+            z-index: 10;
+        }
+
+        /* Main Content - Centered between sidebars */
+        .main-content {
+            width: 940px; /* 2 * 460px cards + 20px gap */
+            margin: 0 auto; /* This will now perfectly center the content */
+            padding-top: 28px;
+        }
+
+        /* --- MASONRY GRID START --- */
+        .project-grid {
+            column-count: 2;
+            column-gap: 20px;
+        }
+
+        .project-card {
+            break-inside: avoid; 
+            margin-bottom: 20px;
+            display: inline-block;
+            width: 100%; 
+        }
+        /* --- MASONRY GRID END --- */
+
+        .project-card a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .project-card-image {
+            width: 100%;
+            height: auto;
+            display: block;
+            background-color: #d9d9d9;
+            transition: opacity 0.3s ease; /* Hover transition */
+        }
+
+        .project-card a:hover .project-card-image {
+            opacity: 0.7; /* Hover effect */
+        }
+
+        .project-card-title {
+            margin-top: 8px; 
+            font-size: 16px;
+            text-align: center;
+            letter-spacing: -0.2px;
+            font-weight: 500;
+            color: rgba(0, 0, 0, 0.95);
+        }
+
+        /* Animation */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-1rem); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .fade-in {
+            opacity: 0;
+            animation: fadeIn 0.8s ease-out forwards;
+            animation-delay: var(--animation-delay, 0ms);
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 1420px) { /* Breakpoint when sidebars and content might collide */
+            .main-content {
+                width: auto;
+                margin: 0 270px; /* Use margins to avoid sidebars */
+            }
+        }
+
+        @media (max-width: 768px) {
+            #left-nav {
+                position: static;
+                width: 100%;
+                padding: 20px;
+                box-sizing: border-box;
+            }
+
+            .right-sidebar-placeholder {
+                display: none; /* Hide the placeholder on mobile */
+            }
+
+            .main-content {
+                width: 100%;
+                margin: 0;
+                padding: 0 20px 20px 20px;
+            }
+
+            .project-grid {
+                column-count: 1;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="page-container">
+        <!-- Sidebar Navigation -->
+        <nav id="left-nav">
+            <a href="index.html" class="nav-item lct-title-style">LCT</a>
+            <a href="index.html" class="nav-item">Projects</a>
+            <a href="#about" class="nav-item">About</a>
+        </nav>
+
+        <!-- Right Placeholder Sidebar -->
+        <aside class="right-sidebar-placeholder"></aside>
+
+        <!-- Main Content Grid -->
+        <main class="main-content">
+            <div class="project-grid">
+                <!-- Project 1 -->
+                <div class="project-card fade-in" style="--animation-delay: 200ms;">
+                    <a href="./Below the Wugu Mountain/index_full_height.html">
+                        <img class="project-card-image" src="./Below the Wugu Mountain/Screenshot 2025-09-01 095913.png" alt="Below the Wugu Mountain">
+                        <h2 class="project-card-title">Below the Wugu Mountain</h2>
+                    </a>
+                </div>
+
+                <!-- Project 3 (now DAL) -->
+                <div class="project-card fade-in" style="--animation-delay: 400ms;">
+                    <a href="./Drawing A Line on the Ground Map/index_full_height.html">
+                        <img class="project-card-image" src="./Drawing A Line on the Ground Map/Screenshot 2025-09-02 234605.png" alt="Drawing A Line on the Ground Map">
+                        <h2 class="project-card-title">Drawing A Line on the Ground Map</h2>
+                    </a>
+                </div>
+
+                <!-- Project 2 (now LFE) -->
+                <div class="project-card fade-in" style="--animation-delay: 600ms;">
+                    <a href="./Learning from the Earthworks/index_full_height.html">
+                        <img class="project-card-image" src="./Learning from the Earthworks/Screenshot 2025-09-01 104316.png" alt="Learning from the Earthworks">
+                        <h2 class="project-card-title">Learning from the Earthworks</h2>
+                    </a>
+                </div>
+
+                <!-- Project 5 (now PIR) -->
+                <div class="project-card fade-in" style="--animation-delay: 800ms;">
+                    <a href="./Prototypical Infrastructure on the LA River/index_full_height.html">
+                        <img class="project-card-image" src="./Prototypical Infrastructure on the LA River/AAD-Moon-Eddie-Tom-Norman-SU25-Video-Before-During-After.gif" alt="Prototypical Infrastructure on the LA River">
+                        <h2 class="project-card-title">Prototypical Infrastructure on the LA River</h2>
+                    </a>
+                </div>
+
+                <!-- Project 4 (now SP) -->
+                <div class="project-card fade-in" style="--animation-delay: 1000ms;">
+                    <a href="./Super Public/index.html">
+                        <img class="project-card-image" src="./Super Public/Screenshot 2025-09-06 095800.png" alt="Super Public">
+                        <h2 class="project-card-title">Super Public</h2>
+                    </a>
+                </div>
+
+                <!-- Project 6 -->
+                <div class="project-card fade-in" style="--animation-delay: 1200ms;">
+                    <a href="./Within the Community/index_full_height.html">
+                        <img class="project-card-image" src="./Within the Community/Screenshot 2025-09-07 174354.png" alt="Within the Community">
+                        <h2 class="project-card-title">Within the Community</h2>
+                    </a>
+                </div>
+
+                <!-- Project 7 -->
+                <div class="project-card fade-in" style="--animation-delay: 1400ms;">
+                    <a href="./Co-Living Landscape/index_full_height.html">
+                        <img class="project-card-image" src="./Co-Living Landscape/Screenshot 2025-09-07 181749.png" alt="Co-Living Landscape">
+                        <h2 class="project-card-title">Co-Living Landscape</h2>
+                    </a>
+                </div>
+
+            </div>
+        </main>
+    </div>
+</body>
+</html>

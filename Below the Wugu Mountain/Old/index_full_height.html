@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Below the Wugu Mountain</title>
+    <title>Below the Wugu Mountain - A Time Machine for the Anthropocene</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css?family=Inter:500" rel="stylesheet">
@@ -20,41 +20,33 @@
             box-sizing: border-box;
         }
 
-        /* Left Navigation - Fixed */
+        /* Left Navigation - Unified Flexbox Layout */
         #left-nav {
             position: fixed;
-            top: 28px;
+            top: 32px;
             left: 30px;
             width: 220px;
             z-index: 10;
-        }
-
-        #left-nav .lct-title {
-            height: 30px;
-            font-size: 20px;
-            font-weight: 500;
-            color: rgba(0, 0, 0, 0.95);
-            letter-spacing: -0.2px;
-            line-height: 30px;
-            white-space: nowrap;
-        }
-
-        #left-nav .nav-links {
-            margin-top: 74px;
             display: flex;
             flex-direction: column;
-            align-items: flex-start;
-            gap: 27px;
         }
-        
-        #left-nav .nav-links a {
-            font-size: 15px;
-            letter-spacing: -0.15px;
+
+        /* Unified settings for all navigation items */
+        .nav-item {
+            height: 80px; /* Key: All items are 80px high for equal spacing */
             font-weight: 500;
             color: rgba(0, 0, 0, 0.95);
             cursor: pointer;
             transition: opacity 0.2s ease;
             text-decoration: none;
+            font-size: 15px; /* Default font size */
+            letter-spacing: -0.15px;
+        }
+
+        /* Style specifically for the LCT title */
+        .lct-title-style {
+            font-size: 20px; /* Enlarge font */
+            letter-spacing: -0.2px;
         }
 
         /* Right Sidebar - Fixed */
@@ -64,13 +56,13 @@
             top: 32px;
             right: 30px;
             z-index: 10;
-            height: 100%; /* Needed for absolute positioning of children */
+            display: flex;
+            flex-direction: column;
+            /* The gap is now controlled by the height of .meta-entry */
         }
 
         .meta-entry {
-            position: absolute; /* Restored for original layout */
-            left: 0;
-            width: 100%;
+            height: 80px; /* Set fixed height to create a consistent 80px rhythm */
             display: flex;
             flex-direction: column;
             align-items: flex-end;
@@ -98,10 +90,16 @@
 
         /* Main Content - Centered */
         #main-content {
-            width: 740px;
-            max-width: calc(100% - 560px);
+            /* 1. Set a maximum width, as you suggested. 1400px is a good starting point. */
+            max-width: 1400px; 
+
+            /* 2. On smaller screens, let the width be flexible, leaving some margin. 
+               This calculation respects the existing fixed sidebars. */
+            width: calc(100% - 560px); 
+
+            /* 3. Keep the content centered. */
             margin: 0 auto;
-            padding: 32px 0;
+                padding: 22px 0; /* Final adjustment for top baseline alignment */
             height: auto;
             overflow-y: visible;
         }
@@ -117,7 +115,7 @@
 
         .main-header h1 {
             font-size: 32px;
-            text-align: center;
+            text-align: center; /* Changed back to center */
             letter-spacing: -0.32px;
             line-height: 48px;
             color: rgba(0, 0, 0, 0.95);
@@ -126,7 +124,7 @@
 
         .main-header p {
             font-size: 20px;
-            text-align: center;
+            text-align: center; /* Changed back to center */
             letter-spacing: -0.20px;
             line-height: 30px;
             color: rgba(0, 0, 0, 0.4);
@@ -144,7 +142,7 @@
         .project-section h2 {
             align-self: stretch;
             font-size: 20px;
-            text-align: center;
+            text-align: center; /* Changed back to center */
             letter-spacing: -0.20px;
             line-height: 30px;
             color: rgba(0, 0, 0, 0.95);
@@ -152,15 +150,18 @@
         }
 
         .project-section p {
-            width: 651px;
-            max-width: 100%;
+            /* Let the width be flexible, occupying 100% of its container */
+            width: 100%;
+            /* Set a max-width for readability on large screens */
+            max-width: 700px;
+            /* Center the block when it reaches max-width */
+            margin: 0 auto;
             font-weight: 400;
             color: rgba(0, 0, 0, 0.95);
             font-size: 15px;
-            text-align: center;
+            text-align: left;
             letter-spacing: -0.15px;
             line-height: 22.5px;
-            margin: 0;
         }
 
         .project-section img {
@@ -168,15 +169,84 @@
             height: auto;
         }
 
+        .image-grid-2-col {
+            column-count: 2;
+            column-gap: 20px;
+            width: 100%;
+        }
+
+        .image-grid-2-col > img {
+            break-inside: avoid;
+            margin-bottom: 20px;
+            width: 100%;
+        }
+
+        /* --- Accordion Styles --- */
+        .info-accordion {
+            display: none; /* Hidden on desktop */
+        }
+
+        .info-accordion summary {
+            list-style: none; /* Remove default marker */
+            align-items: center;
+        }
+        .info-accordion summary::-webkit-details-marker {
+            display: none; /* Hide marker for Safari */
+        }
+
+        .arrow {
+            display: inline-block;
+            margin-left: 10px; /* Space between text and arrow */
+            width: 0;
+            height: 0;
+            border-top: 5px solid transparent;
+            border-bottom: 5px solid transparent;
+            border-left: 6px solid rgba(0, 0, 0, 0.95);
+            transition: transform 0.2s ease;
+        }
+
+        .info-accordion[open] > summary .arrow {
+            transform: rotate(90deg);
+        }
+
+        .accordion-content {
+            padding: 0 0 0 15px; /* Reset padding */
+            margin-top: -20px; /* Pull content up to counteract summary height */
+        }
+
+        .accordion-content .meta-entry {
+            height: auto;
+            align-items: flex-start;
+            gap: 5px;
+        }
+
+        /* Add margin to subsequent items for spacing */
+        .accordion-content .meta-entry + .meta-entry {
+            margin-top: 20px;
+        }
+
+        .accordion-content .meta-entry dt,
+        .accordion-content .meta-entry dd {
+            text-align: left;
+        }
+
         /* Responsive Layout */
         @media (max-width: 1200px) {
             #left-nav, #right-sidebar {
                 position: static;
                 width: 100%;
-                max-width: 740px;
-                margin: 20px auto;
-                padding: 0 20px;
+                max-w: 740px;
+                margin: 32px auto;
+                padding: 0 30px;
                 height: auto;
+            }
+
+            #right-sidebar {
+                display: none; /* Hide original sidebar on mobile */
+            }
+
+            .info-accordion {
+                display: block; /* Show accordion on mobile */
             }
 
             #right-sidebar .meta-entry {
@@ -196,73 +266,75 @@
                 padding: 20px;
             }
         }
+
+        @media (max-width: 768px) {
+            .image-grid-2-col {
+                column-count: 1;
+            }
+        }
     </style>
 </head>
 <body>
     <div class="page-container">
-        <!-- Left Navigation -->
         <nav id="left-nav">
-            <a href="/" style="text-decoration: none; color: inherit;"><div class="lct-title">LCT</div></a>
-            <div class="nav-links">
-                <a href="/">Projects</a>
-                <a href="../../About.html">About</a>
-            </div>
+            <a href="../index.html" class="nav-item lct-title-style">LCT</a>
+            <a href="../index.html" class="nav-item">Projects</a>
+            <a href="../About.html" class="nav-item">About</a>
+            <details class="info-accordion">
+                <summary class="nav-item">
+                    Details
+                    <span class="arrow"></span>
+                </summary>
+                <div class="accordion-content">
+                    <div class="meta-entry"><dt>Year</dt><dd>2019</dd></div>
+            <div class="meta-entry"><dt>Type</dt><dd>Thesis Project (Individual Work)</dd></div>
+            <div class="meta-entry"><dt>Location</dt><dd>Taipei, Taiwan</dd></div>
+            <div class="meta-entry"><dt>Instructor</dt><dd>Yu-Han Lin</dd></div>
+                </div>
+            </details>
         </nav>
 
-        <!-- Right Sidebar -->
         <aside id="right-sidebar">
-            <div class="meta-entry" style="top: 0px;"><dt>Year</dt><dd>2019</dd></div>
-            <div class="meta-entry" style="top: 80px;"><dt>Type</dt><dd>Thesis Project (Individual Work)</dd></div>
-            <div class="meta-entry" style="top: 160px;"><dt>Location</dt><dd>Taipei, Taiwan</dd></div>
-            <div class="meta-entry" style="top: 240px;"><dt>Role</dt><dd>Curator & Lead Producer</dd></div>
-            <div class="meta-entry" style="top: 320px;"><dt>Medium</dt><dd>Video Installation and Printed Outputs</dd></div>
+            <div class="meta-entry"><dt>Year</dt><dd>2019</dd></div>
+            <div class="meta-entry"><dt>Type</dt><dd>Thesis Project (Individual Work)</dd></div>
+            <div class="meta-entry"><dt>Location</dt><dd>Taipei, Taiwan</dd></div>
+            <div class="meta-entry"><dt>Instructor</dt><dd>Yu-Han Lin</dd></div>
         </aside>
 
-        <!-- Main Content -->
         <main id="main-content">
             <header class="main-header">
                 <h1>Below the Wugu Mountain</h1>
                 <p>A Time Machine for the Anthropocene</p>
             </header>
 
-            <div class="sections-wrapper">
-                <section class="project-section">
+            <section class="project-section">
                     <h2>How Can Urban Infrastructure Adapt to a Changing Environment?</h2>
-                    <p>In the face of dual challenges from extreme climate and urbanization, contemporary cities are confronting the critical issues of environmental resilience and infrastructure transformation. The Wugu Mountain landfill, as a site bearing the historical imprint of post-war industrialization, not only reflects the environmental impact of human activities but also reveals the crucial role of urban infrastructure in both disaster and daily contexts.</p>
-                    <img src="Screenshot 2025-09-01 095913.png" alt="Aerial photo grid of Wugu Mountain area">
-                    <img src="Screenshot 2025-09-01 095946.png" alt="Zoning map of the site">
+                    <p>In the face of dual challenges from extreme climate and urbanization, contemporary cities are confronting the critical issues of environmental resilience and infrastructure transformation. The Wugu Mountain landfill, as a site bearing the historical imprint of post-war industrialization, not only reflects the environmental impact of human activities but also reveals the crucial role of urban infrastructure in both disaster and daily contexts. This project explores how design can transform this unique site at the interface of urban periphery and nature, converting it from a singlepurpose disaster prevention infrastructure into a resilient urban space that functions in both ordinary and extraordinary times. Through the phased transformation of the landfill, restructuring of waste treatment facilities, and introduction of multi-layered green systems, the project creates a new type of urban infrastructure that integrates disaster prevention, ecology, and publicness.</p>
+                    <img src="Screenshot 2025-09-07 211810.png" alt="How Can Urban Infrastructure Adapt to a Changing Environment? Image">
                 </section>
 
                 <section class="project-section">
                     <h2>Landscape Genealogy: Emerging Territory</h2>
-                    <p>Over the past six decades, social and natural meanings have been projected, layered, and evolved in this place—through agricultural settlements, industrial zones, flood disasters and mitigation infrastructure, and the gentrification struggle across different social strata. This plan is both central and marginal.</p>
-                    <img src="Screenshot 2025-09-01 095958.png" alt="Timeline of landscape genealogy">
-                    <img src="Screenshot 2025-09-01 100014.png" alt="Map with color overlays showing development">
+                    <p>Over the past six decades, social and natural meanings have been projected, layered, and evolved in this place—through agricultural settlements, industrial zones, flood disasters and mitigation infrastructure, and the gentrification struggle across different social strata. This plain is both central and marginal.</p>
+                    <img src="Screenshot 2025-09-07 211916.png" alt="Landscape Genealogy: Emerging Territory Image">
                 </section>
 
                 <section class="project-section">
                     <h2>Political Geography: The Accumulating Anthropocene Strata</h2>
-                    <p>Each phase of existence is inscribed within the landscape. To the geographic cross-section, archaeological evidence layers from new to old: the Wugu Garbage Mountain formed by industrial waste, concrete bridges, embankment foundations, salt-affected soil from seawater intrusion, and organic-rich soil deposited on the floodplain. These material traces also reflect the rise and fall of social territories.</p>
-                    <img src="Screenshot 2025-09-01 100029.png" alt="3D layered strata diagram of the site">
-                    <img src="Screenshot 2025-09-01 100044.png" alt="Metabolic flow diagram of the project">
+                    <p>Each phase of existence is inscribed within the landscape. In the geographic cross-section, archaeological evidence layers from new to old: the Wugu Garbage Mountain formed by industrial waste, concrete bridges, embankment foundations, salt-affected soil from seawater intrusion, and organic-rich soil deposited on the floodplain. These material traces also reflect the rise and fall of social territories.</p>
+                    <img src="Screenshot 2025-09-07 212101.png" alt="Political Geography: The Accumulating Anthropocene Strata Image">
                 </section>
 
                 <section class="project-section">
                     <h2>Infrastructure for the Future: From Landfill to Ecological Riverfront</h2>
                     <p>Facing the dual crises of waste pollution and rising water levels, this project proposes a transformative approach to convert hazards into public-benefit landscapes. In the short term, the landfill will be dismantled in phases, with waste repurposed for embankments and waste-to-energy facilities harnessing residual heat. Over time, multifunctional levees and green landscapes will reshape the site into a resilient, ecologically restored riverfront.</p>
-                    <img src="Screenshot 2025-09-01 100056.png" alt="Site plan view of the proposed infrastructure">
-                    <img src="Screenshot 2025-09-01 100107.png" alt="Phased transformation diagrams of the landfill">
+                    <img src="Screenshot 2025-09-07 212341.png" alt="Infrastructure for the Future: From Landfill to Ecological Riverfront Image 1">
+                    <img src="Screenshot 2025-09-07 212134.png" alt="Infrastructure for the Future: From Landfill to Ecological Riverfront Image 2">
+                    <img src="Screenshot 2025-09-07 212410.png" alt="Infrastructure for the Future: From Landfill to Ecological Riverfront Image 3">
+                    <img src="Screenshot 2025-09-07 212452.png" alt="Infrastructure for the Future: From Landfill to Ecological Riverfront Image 4">
+                    <img src="Screenshot 2025-09-07 212607.png" alt="Infrastructure for the Future: From Landfill to Ecological Riverfront Image 5">
+                    <img src="Screenshot 2025-09-07 212630.png" alt="Infrastructure for the Future: From Landfill to Ecological Riverfront Image 6">
                 </section>
-
-                <section class="project-section">
-                    <h2>Spaces in-between: Sections of Infrastructure and Landscape</h2>
-                    <p>Axonometric view showing the sections of infrastructure and landscape, including Memorial Garden, Entrance Lobby, Columbarium Hall, and Waste Incineration Plant.</p>
-                    <img src="Screenshot 2025-09-01 100120.png" alt="Axonometric section view of the project">
-                    <img src="Screenshot 2025-09-05 014546.png" alt="Newest image 1">
-                    <img src="Screenshot 2025-09-05 014521.png" alt="Newest image 2">
-                    <img src="Screenshot 2025-09-05 014458.png" alt="Newest image 3">
-                </section>
-            </div>
         </main>
     </div>
 </body>

@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prototypical Infrastructure on the LA River - Mobile Preview v10</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css?family=Inter:500" rel="stylesheet">
+    <style>
+        /* Basic Reset & Font */
+        html, body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Inter', Helvetica, sans-serif;
+            background-color: #fff;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        /* --- DESKTOP STYLES (Original & Untouched) --- */
+        #left-nav {
+            position: fixed;
+            top: 32px;
+            left: 30px;
+            width: 220px;
+            z-index: 10;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .nav-item {
+            height: 80px;
+            font-weight: 500;
+            color: rgba(0, 0, 0, 0.95);
+            cursor: pointer;
+            text-decoration: none;
+            font-size: 15px;
+            letter-spacing: -0.15px;
+        }
+
+        .lct-title-style {
+            font-size: 20px;
+            letter-spacing: -0.2px;
+        }
+
+        #right-sidebar {
+            position: fixed;
+            width: 220px;
+            top: 32px;
+            right: 30px;
+            z-index: 10;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .meta-entry {
+            height: 80px;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            gap: 7px;
+        }
+        .meta-entry dt { font-weight: 500; color: rgba(0, 0, 0, 0.95); font-size: 15px; text-align: right; letter-spacing: -0.15px; }
+        .meta-entry dd { margin: 0; color: rgba(0, 0, 0, 0.4); font-size: 15px; text-align: right; letter-spacing: -0.15px; }
+
+        #main-content {
+            max-width: 1400px; 
+            width: calc(100% - 560px); 
+            margin: 0 auto;
+            padding: 22px 0;
+        }
+
+        .mobile-ui-wrapper, .mobile-footer {
+            display: none;
+        }
+
+        /* --- Original Content Styles --- */
+        .main-header { width: 100%; margin: 0 auto 88px auto; text-align: center; }
+        .main-header h1 { font-size: 32px; letter-spacing: -0.32px; line-height: 48px; color: rgba(0, 0, 0, 0.95); margin: 0; }
+        .main-header p { font-size: 20px; letter-spacing: -0.20px; line-height: 30px; color: rgba(0, 0, 0, 0.4); margin: 0; }
+        .project-section { display: flex; flex-direction: column; align-items: center; gap: 24px; margin-bottom: 80px; }
+        .project-section h2 { align-self: stretch; font-size: 20px; text-align: center; letter-spacing: -0.20px; line-height: 30px; color: rgba(0, 0, 0, 0.95); margin: 0; }
+        .project-section p { width: 100%; max-width: 700px; margin: 0 auto; font-weight: 400; color: rgba(0, 0, 0, 0.95); font-size: 15px; text-align: left; letter-spacing: -0.15px; line-height: 22.5px; }
+        .project-section img { width: 100%; height: auto; }
+        .half-width-image { width: 50% !important; margin-left: auto; margin-right: auto; display: block; }
+        .image-grid-2-col { column-count: 2; column-gap: 20px; width: 100%; }
+        .image-grid-2-col > img { break-inside: avoid; margin-bottom: 20px; width: 100%; }
+        .video-wrapper { position: relative; padding-bottom: 56.25%; height: 0; width: 100%; overflow: hidden; }
+        .video-wrapper iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
+
+
+        /* --- MAIN RESPONSIVE BREAKPOINT --- */
+        @media (max-width: 1200px) {
+            /* 1. Hide original desktop navigation */
+            #left-nav, #right-sidebar {
+                display: none;
+            }
+
+            /* 2. Show mobile UI wrapper */
+            .mobile-ui-wrapper {
+                display: flex;
+                justify-content: space-between;
+                align-items: flex-start; /* Align items to the top */
+                padding: 32px 30px 0 30px; /* Top padding for LCT and Details */
+                position: relative; /* To contain absolutely positioned elements if needed */
+            }
+
+            .mobile-lct-logo {
+                position: static; /* No longer fixed */
+                color: rgba(0, 0, 0, 0.95);
+                text-decoration: none;
+                font-size: 20px;
+                font-weight: 500;
+                letter-spacing: -0.2px;
+            }
+
+            .mobile-details-accordion {
+                position: static; /* No longer fixed */
+                text-align: right; /* Align content to the right */
+            }
+
+            .mobile-details-accordion summary {
+                font-size: 15px;
+                font-weight: 500;
+                cursor: pointer;
+                list-style: none;
+                padding: 5px;
+                display: inline-block; /* Allow padding to apply */
+            }
+            .mobile-details-accordion summary::-webkit-details-marker { display: none; }
+            .mobile-details-accordion .arrow {
+                display: inline-block;
+                margin-left: 8px;
+                border: solid black;
+                border-width: 0 2px 2px 0;
+                padding: 3px;
+                transform: rotate(45deg);
+                transition: transform 0.2s;
+            }
+            .mobile-details-accordion[open] > summary .arrow {
+                transform: rotate(-135deg);
+            }
+            .mobile-details-accordion .accordion-content {
+                /* No absolute positioning, no background, no blur, no border */
+                position: static;
+                background: none;
+                backdrop-filter: none;
+                -webkit-backdrop-filter: none;
+                border: none;
+                border-radius: 0;
+                padding: 15px 0 0 0; /* Only top padding */
+                width: auto;
+            }
+            .mobile-details-accordion .meta-entry {
+                height: auto;
+                align-items: flex-end; /* Align content to the right */
+                text-align: right; /* Align text to the right */
+                gap: 5px;
+            }
+            .mobile-details-accordion .meta-entry + .meta-entry { margin-top: 15px; }
+            .mobile-details-accordion .meta-entry dt { font-size: 15px; }
+            .mobile-details-accordion .meta-entry dd { font-size: 15px; }
+
+            /* 3. Show and style mobile footer */
+            .mobile-footer {
+                display: flex;
+                justify-content: space-between;
+                max-width: 740px;
+                margin: 0 auto;
+                padding: 40px 30px;
+            }
+            .mobile-footer a {
+                text-decoration: none;
+                font-size: 15px;
+                font-weight: 500;
+                color: rgba(0, 0, 0, 0.95);
+            }
+
+            /* 4. Adjust main content for new layout */
+            #main-content {
+                width: 100%;
+                max-width: 100%;
+                padding: 20px 30px 0 30px; /* Adjust top padding as needed */
+            }
+        }
+
+        @media (max-width: 768px) {
+            .image-grid-2-col {
+                column-count: 1;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="page-container">
+        <!-- Original Desktop UI -->
+        <nav id="left-nav">
+            <a href="../index.html" class="nav-item lct-title-style">LCT</a>
+            <a href="../index.html" class="nav-item">Projects</a>
+            <a href="../About.html" class="nav-item">About</a>
+        </nav>
+        <aside id="right-sidebar">
+            <div class="meta-entry"><dt>Year</dt><dd>2025</dd></div>
+            <div class="meta-entry"><dt>Type</dt><dd>Studio Project (Individual Work)</dd></div>
+            <div class="meta-entry"><dt>Location</dt><dd>Los Angeles, USA</dd></div>
+            <div class="meta-entry"><dt>Instructor</dt><dd>David Eugin Moon (N H D M, Partner)</dd></div>
+        </aside>
+
+        <!-- Main Content -->
+        <main id="main-content">
+            <header class="main-header">
+                <h1>Prototypical Infrastructure on the LA River</h1>
+                <p>IN THE AGE OF THE PYROCENE</p>
+            </header>
+            <div class="sections-wrapper">
+                <section class="project-section">
+                    <p>In an era of increasing wildfire threats, a period defined by fire and combustion that can be called the Pyrocene, this project reimagines the Los Angeles River as a critical line of defense and a vital community asset. It proposes interventions at the Wildland-Urban Interface (WUI), creating dual-purpose infrastructure that provides engaging public space for daily life. These spaces are designed to foster new community rituals  while offering essential water resources and shelter during a fire.</p>
+                    <img src="Screenshot 2025-09-07 153631.png" alt="Prototypical Infrastructure on the LA River Image 1">
+                </section>
+                <section class="project-section">
+                    <h2>Analysis & Strategy</h2>
+                    <p>The project directly confronts the shifting wildfire-urban boundary and the destructive fire-rebuild cycle that impacts residents. Sited in the high-risk Glendale area, the strategy is to create prototypes that function as public amenities in normal times and as life-saving infrastructure during a fire emergency.</p>
+                    <img src="Untitled-3.png" alt="Prototypical Infrastructure on the LA River Image 2">
+                    <img src="Untitled-31.png" alt="Prototypical Infrastructure on the LA River Image 3">
+                </section>
+                <section class="project-section">
+                    <h2>Three Fire-Ready Prototypes for the WUI</h2>
+                    <p>These projects propose public programs that occupy the boundaries of proposed firebreaks or buffer zones:
+
+Reservoir Hub: An expanded reservoir featuring a public amphitheater that converts into a community fire shelter and a strategic water distribution point.
+
+Community Pool & Cistern: A neighborhood swimming pool that serves as a recreational hub while its water volume acts as a ready reserve for firefighting.
+
+Infrastructural Bridge: A bridge over the river with integrated water tanks that support a park while storing vast amounts of water for an emergency fire response.</p>
+                    <img src="AAD Moon Eddie Tom Norman SU25 Drawing.png" alt="Prototypical Infrastructure on the LA River Image 4">
+                    <img src="Screenshot 2025-09-07 153905.png" alt="Prototypical Infrastructure on the LA River Image 5">
+                </section>
+                <section class="project-section">
+                    <div class="video-wrapper">
+                        <iframe src="https://www.youtube.com/embed/7THXU6lFbzA?si=QXQIrdpturJnl4Sz" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                    </div>
+                </section>
+                <section class="project-section">
+                    <h2>LA River in the Future</h2>
+                    <p>Together, these prototypes create an integrated water system for fire defense. Rather than trying to restore a wild state that no longer exists, the project seeks to "recompose" the LA River. It transforms it from a simple channel into a resilient public landscape built on principles of solidarity and reciprocity , actively fostering social resilience  to protect its community in the face of wildfire.</p>
+                    <img class="half-width-image" src="AAD Moon Eddie Tom Norman SU25 System.png" alt="Prototypical Infrastructure on the LA River Image 6">
+                </section>
+                <section class="project-section">
+                    <img src="Screenshot 2025-09-07 165331.png" alt="Prototypical Infrastructure on the LA River Image 7">
+                </section>
+            </div>
+        </main>
+
+        <!-- Mobile UI Wrapper -->
+        <div class="mobile-ui-wrapper">
+            <a href="../index.html" class="mobile-lct-logo lct-title-style">LCT</a>
+            <details class="mobile-details-accordion">
+                <summary>Details <span class="arrow"></span></summary>
+                <div class="accordion-content">
+                    <div class="meta-entry"><dt>Year</dt><dd>2025</dd></div>
+                    <div class="meta-entry"><dt>Type</dt><dd>Studio Project (Individual Work)</dd></div>
+                    <div class="meta-entry"><dt>Location</dt><dd>Los Angeles, USA</dd></div>
+                    <div class="meta-entry"><dt>Instructor</dt><dd>David Eugin Moon (N H D M, Partner)</dd></div>
+                </div>
+            </details>
+            <footer class="mobile-footer">
+                <a href="../index.html">Projects</a>
+                <a href="../About.html">About</a>
+            </footer>
+        </div>
+    </div>
+</body>
+</html>

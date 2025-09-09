@@ -58,6 +58,11 @@
             z-index: 10;
         }
 
+        /* Mobile Footer (Hidden on Desktop) */
+        .mobile-footer {
+            display: none;
+        }
+
         /* Main Content - Centered between sidebars */
         .main-content {
             width: 940px; /* 2 * 460px cards + 20px gap */
@@ -103,6 +108,7 @@
             letter-spacing: -0.2px;
             font-weight: 500;
             color: rgba(0, 0, 0, 0.95);
+            line-height: 24px; /* Set line height to 24px */
         }
 
         /* Animation */
@@ -132,6 +138,9 @@
                 padding: 32px 30px;
                 box-sizing: border-box;
             }
+            #left-nav .nav-item:not(.lct-title-style) { /* Hide Projects and About links */
+                display: none;
+            }
 
             .right-sidebar-placeholder {
                 display: none; /* Hide the placeholder on mobile */
@@ -141,6 +150,21 @@
                 width: 100%;
                 margin: 0;
                 padding: 0 20px 20px 20px;
+            }
+
+            /* Mobile Footer (Visible on Mobile) */
+            .mobile-footer {
+                display: flex;
+                justify-content: space-between;
+                max-width: 740px; /* Adjust as needed */
+                margin: 0 auto;
+                padding: 40px 30px;
+            }
+            .mobile-footer a {
+                text-decoration: none;
+                font-size: 15px;
+                font-weight: 500;
+                color: rgba(0, 0, 0, 0.95);
             }
 
             .project-grid {
@@ -223,5 +247,9 @@
             </div>
         </main>
     </div>
+    <footer class="mobile-footer">
+        <a href="index.html">Projects</a>
+        <a href="About.html">About</a>
+    </footer>
 </body>
 </html>

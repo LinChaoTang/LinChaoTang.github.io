@@ -102,7 +102,7 @@
 
         .about-intro-text {
             font-size: 15px;
-            line-height: 1.5;
+            line-height: 24px; /* Changed to 24px */
             color: rgba(0, 0, 0, 0.85);
         }
 
@@ -119,7 +119,7 @@
 
         .resume-section p {
             font-size: 15px;
-            line-height: 1.5;
+            line-height: 24px; /* Changed to 24px */
             margin-bottom: 5px;
             color: rgba(0, 0, 0, 0.85);
         }
@@ -144,9 +144,12 @@
                 padding: 32px 30px; /* Match desktop top/left positioning */
                 box-sizing: border-box; /* Ensures padding is included in width */
                 height: auto;
-                border-bottom: 1px solid #eee;
+                /* border-bottom: 1px solid #eee; Removed horizontal line */
                 z-index: 1;
                 /* flex-direction: column; is inherited, keeping it vertical */
+            }
+            #left-nav .nav-item:not(.lct-title-style) { /* Hide Projects and About links */
+                display: none;
             }
             
             
@@ -155,12 +158,29 @@
                 display: none;
             }
 
+            /* Removed #left-nav and .right-sidebar-placeholder styles as they are no longer in HTML */
+
             .main-content {
                 width: 100%;
                 margin: 0;
                 padding: 20px;
                 height: auto;
                 overflow: visible;
+            }
+
+            /* Mobile Footer */
+            .mobile-footer {
+                display: flex;
+                justify-content: space-between;
+                max-width: 740px; /* Adjust as needed */
+                margin: 0 auto;
+                padding: 40px 30px;
+            }
+            .mobile-footer a {
+                text-decoration: none;
+                font-size: 15px;
+                font-weight: 500;
+                color: rgba(0, 0, 0, 0.95);
             }
 
             .about-container {
@@ -184,6 +204,8 @@
 
     <!-- Right Placeholder Sidebar -->
     <aside class="right-sidebar-placeholder"></aside>
+    
+    
 
     <!-- Main Content -->
     <main class="main-content">
@@ -270,5 +292,9 @@
             </div>
         </div>
     </main>
+        <footer class="mobile-footer">
+        <a href="index.html">Projects</a>
+        <a href="About.html">About</a>
+    </footer>
 </body>
 </html>

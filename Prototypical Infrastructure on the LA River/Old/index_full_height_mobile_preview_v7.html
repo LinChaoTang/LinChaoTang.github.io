@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Prototypical Infrastructure on the LA River - Mobile Preview v7</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic" crossorigin>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css?family=Inter:500" rel="stylesheet">
     <style>
         /* Basic Reset & Font */
@@ -98,7 +98,7 @@
         .main-header p { font-size: 20px; letter-spacing: -0.20px; line-height: 30px; color: rgba(0, 0, 0, 0.4); margin: 0; }
         .project-section { display: flex; flex-direction: column; align-items: center; gap: 24px; margin-bottom: 80px; }
         .project-section h2 { align-self: stretch; font-size: 20px; text-align: center; letter-spacing: -0.20px; line-height: 30px; color: rgba(0, 0, 0, 0.95); margin: 0; }
-        .project-section p { width: 100%; max-width: 700px; margin: 0 auto; font-weight: 200; color: rgba(0, 0, 0, 0.95); font-size: 15px; text-align: left; letter-spacing: -0.15px; line-height: 24px; }
+        .project-section p { width: 100%; max-width: 700px; margin: 0 auto; font-weight: 400; color: rgba(0, 0, 0, 0.95); font-size: 15px; text-align: left; letter-spacing: -0.15px; line-height: 22.5px; }
         .project-section img { width: 100%; height: auto; }
         .half-width-image { width: 50% !important; margin-left: auto; margin-right: auto; display: block; }
         .image-grid-2-col { column-count: 2; column-gap: 20px; width: 100%; }
@@ -116,63 +116,67 @@
             /* 2. Show and style mobile UI */
             .mobile-ui-container {
                 display: block;
-                padding: 32px 30px 0 30px;
             }
-            
-            .mobile-ui-container > details > summary {
-                display: block;
-                list-style: none;
-                cursor: pointer;
-            }
-            .mobile-ui-container > details > summary::-webkit-details-marker {
-                display: none;
-            }
-            
-            .mobile-header-row {
-                display: flex;
-                justify-content: space-between;
-                align-items: center;
-                height: 40px;
-            }
-
             .mobile-lct {
+                position: fixed;
+                top: 32px;
+                left: 30px;
+                z-index: 11;
                 color: rgba(0, 0, 0, 0.95);
                 text-decoration: none;
                 font-size: 20px;
                 font-weight: 500;
                 letter-spacing: -0.2px;
             }
-            
-            .details-label {
+            .mobile-details {
+                position: fixed;
+                top: 32px;
+                right: 30px;
+                z-index: 11;
+            }
+            .mobile-details summary {
                 font-size: 15px;
                 font-weight: 500;
+                cursor: pointer;
+                list-style: none;
+                padding: 5px;
             }
-
-            /* Removed arrow styling as per user request */
-            /* Removed arrow rotation styling as per user request */
-
-            /* Accordion content styles */
-            .accordion-content {
-                padding: 20px 0;
+            .mobile-details summary::-webkit-details-marker { display: none; }
+            .mobile-details .arrow {
+                display: inline-block;
+                margin-left: 8px;
+                border: solid black;
+                border-width: 0 2px 2px 0;
+                padding: 3px;
+                transform: rotate(45deg);
+                transition: transform 0.2s;
             }
-            .accordion-content .meta-entry {
+            .mobile-details[open] > summary .arrow {
+                transform: rotate(-135deg);
+            }
+            .mobile-details .accordion-content {
+                position: absolute;
+                top: 40px;
+                right: 0;
+                background: rgba(255, 255, 255, 0.9);
+                backdrop-filter: blur(5px);
+                -webkit-backdrop-filter: blur(5px);
+                border: 1px solid #e0e0e0;
+                border-radius: 8px;
+                padding: 15px;
+                width: 240px;
+            }
+            .mobile-details .meta-entry {
                 height: auto;
-                display: flex;
-                flex-direction: column;
-                align-items: flex-end; /* Change: Align items to the right */
+                align-items: flex-start;
+                text-align: left;
                 gap: 5px;
             }
-            .accordion-content .meta-entry + .meta-entry {
-                margin-top: 15px;
-            }
-            .accordion-content .meta-entry dt, .accordion-content .meta-entry dd {
-                font-size: 15px;
-                text-align: right;
-                font-weight: 200; /* Changed to even thinner font */
-                line-height: 24px; /* Set line height to 24px */
-            }
-            
-            /* Restore mobile footer styles */
+            .mobile-details .meta-entry + .meta-entry { margin-top: 15px; }
+            .mobile-details .meta-entry dt { font-size: 15px; }
+            .mobile-details .meta-entry dd { font-size: 15px; }
+
+            /* 3. Show and style mobile footer */
             .mobile-footer {
                 display: flex;
                 justify-content: space-between;
@@ -191,7 +195,7 @@
             #main-content {
                 width: 100%;
                 max-width: 100%;
-                padding: 44px 30px 0 30px; 
+                padding: 80px 30px 0 30px;
             }
         }
 
@@ -203,6 +207,7 @@
     </style>
 </head>
 <body>
+    <!-- Original Desktop UI -->
     <nav id="left-nav">
         <a href="../index.html" class="nav-item lct-title-style">LCT</a>
         <a href="../index.html" class="nav-item">Projects</a>
@@ -210,30 +215,12 @@
     </nav>
     <aside id="right-sidebar">
         <div class="meta-entry"><dt>Year</dt><dd>2025</dd></div>
-        <div class="meta-entry"><dt>Type</dt><dd>Studio Project<br>(Group Work with Eddie Huang and Norman Situ)</dd></div>
+        <div class="meta-entry"><dt>Type</dt><dd>Studio Project (Group Work with Eddie Huang and Norman Situ)</dd></div>
         <div class="meta-entry"><dt>Location</dt><dd>Los Angeles, USA</dd></div>
-        <div class="meta-entry"><dt>Instructor</dt><dd>David Eugin Moon<br>(N H D M, Partner)</dd></div>
+        <div class="meta-entry"><dt>Instructor</dt><dd>David Eugin Moon (N H D M, Partner)</dd></div>
     </aside>
 
-    <div class="mobile-ui-container">
-        <details>
-            <summary>
-                <div class="mobile-header-grid">
-                    <div class="mobile-header-row">
-                        <a href="../index.html" class="mobile-lct">LCT</a>
-                        <div class="details-label">+ details</div>
-                    </div>
-                </div>
-            </summary>
-            <div class="accordion-content">
-                <div class="meta-entry"><dt>Year</dt><dd>2025</dd></div>
-                <div class="meta-entry"><dt>Type</dt><dd>Studio Project<br>(Group Work with Eddie Huang and Norman Situ)</dd></div>
-                <div class="meta-entry"><dt>Location</dt><dd>Los Angeles, USA</dd></div>
-                <div class="meta-entry"><dt>Instructor</dt><dd>David Eugin Moon<br>(N H D M, Partner)</dd></div>
-            </div>
-        </details>
-    </div>
-
+    <!-- Main Content (Same for both) -->
     <main id="main-content">
         <header class="main-header">
             <h1>Prototypical Infrastructure on the LA River</h1>
@@ -278,6 +265,21 @@ Infrastructural Bridge: A bridge over the river with integrated water tanks that
         </div>
     </main>
 
+    <!-- Mobile-Only UI -->
+    <div class="mobile-ui-container">
+        <a href="../index.html" class="mobile-lct lct-title-style">LCT</a>
+        <div class="mobile-details">
+            <details>
+                <summary>Details <span class="arrow"></span></summary>
+                <div class="accordion-content">
+                    <div class="meta-entry"><dt>Year</dt><dd>2025</dd></div>
+                    <div class="meta-entry"><dt>Type</dt><dd>Studio Project (Group Work with Eddie Huang and Norman Situ)</dd></div>
+                    <div class="meta-entry"><dt>Location</dt><dd>Los Angeles, USA</dd></div>
+                    <div class="meta-entry"><dt>Instructor</dt><dd>David Eugin Moon (N H D M, Partner)</dd></div>
+                </div>
+            </details>
+        </div>
+    </div>
     <footer class="mobile-footer">
         <a href="../index.html">Projects</a>
         <a href="../About.html">About</a>

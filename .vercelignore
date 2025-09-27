@@ -1,0 +1,13 @@
+# Ignore individual project folders
+Below the Wugu Mountain/
+Co-Living Landscape/
+Drawing A Line on the Ground Map/
+Learning from the Earthworks/
+Old/
+Prototypical Infrastructure on the LA River/
+Ref/
+Super Public/
+Within the Community/
+
+# Ignore Vercel local state
+.vercel/

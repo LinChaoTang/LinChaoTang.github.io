@@ -1,0 +1,21 @@
+Of course. Here is a single command you can use to automate the entire process. After you've saved your
+  local file changes, you can just run this one line in your terminal.
+
+  ### The Command
+
+
+  This command will stage your changes, commit them with a standard message, push them to GitHub, and deploy
+   them to Vercel, all in one step.
+
+  `
+  git add . && git commit -m "Update website content" && git push && vercel --prod
+  `
+
+  ### How to Use It
+
+
+   1. Make all the desired changes to your website files in your local folder (C:\Users\lct19\Documents\LCT
+      Website_new).
+  Note: The commit message in this command is a generic "Update website content". For your own records, you
+  might want to occasionally change this message inside the command to something more descriptive of the
+  changes you made, like "Fix project image on main page" or "Update About Me text".

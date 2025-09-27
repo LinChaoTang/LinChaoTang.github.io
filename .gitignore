@@ -1,4 +1,8 @@
-
-*.psb
+# Ignore design and working files
 *.indd
-.vercel
+*.psb
+*.psd
+
+# Ignore directories
+Ref/
+working/

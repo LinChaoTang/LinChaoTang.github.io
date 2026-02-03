@@ -2,7 +2,17 @@
 *.indd
 *.psb
 *.psd
+*.ai
+*.dwg
+*.3dm
+*.skp
 
-# Ignore directories
+# Ignore system thumbnails and backups
+.DS_Store
+Thumbs.db
+Old/
+Backup/
+
+# Original ignored directories
 Ref/
 working/

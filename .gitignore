@@ -16,3 +16,6 @@ Backup/
 # Original ignored directories
 Ref/
 working/
+
+# Ignore local README.md
+README.md

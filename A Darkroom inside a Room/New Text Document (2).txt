@@ -1,0 +1,290 @@
+這份程式碼是為您的新專案 **"A Darkroom inside a Room"** 建立的 `index.html`。
+
+**設定說明：**
+
+1. **路徑設定**：請將此檔案存入資料夾 `C:\Users\lct19\Documents\LCT Website_0118\A Darkroom inside a Room\` (請確認資料夾名稱正確)。
+2. **列表順序**：我將此專案設為側邊欄的 **第 1 項**，原本的 *The Albedo Archive* 順延為 **第 2 項**，以此類推。
+3. **檔案格式**：
+* 圖片預設為 `.jpg` (根據您的截圖，這些看起來像渲染圖或照片)。
+* 影片部分使用 `<video>` 標籤，預設為 `.mp4`。如果您的原始檔是 `.mov`，請在程式碼中搜尋 `mp4` 並修改。
+
+
+4. **文字排版**：依照您的要求，採用單欄垂直排列，且**沒有星號**，直接分段呈現。
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A Darkroom inside a Room - LCT</title>
+    
+    <link rel="stylesheet" href="../style.css">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <div class="mobile-header">
+        <a href="../LCT.html">LCT</a>
+        <a href="javascript:void(0)" onclick="toggleMobileMenu()">Menu</a> 
+    </div>
+
+    <aside class="left-sidebar">
+        <div class="site-title"> <a href="../LCT.html">LCT</a><br> </div>
+        <div class="nav-links">
+            <a href="javascript:void(0)" onclick="toggleOverlay()">Information</a>
+            <a href="mailto:your.email@example.com">Email</a>
+            <a href="https://www.linkedin.com/in/yourprofile" target="_blank">Linkedin</a>
+        </div>
+        <div class="project-list-wrapper">
+            <div class="project-list-title">Projects</div>
+            <ol class="project-list">
+                <li><span class="num">1.</span><a href="./index.html">A Darkroom inside a Room</a></li>
+                
+                <li><span class="num">2.</span><a href="../The Albedo Archive/index.html">The Albedo Archive</a></li>
+                
+                <li><span class="num">3.</span><a href="../Below-the-Wugu-Mountain/index.html">Below the Wugu Mountain</a></li>
+                <li><span class="num">4.</span><a href="../Drawing-A-Line-on-the-Ground-Map/index.html">Drawing A Line on the Ground Map</a></li>
+                <li><span class="num">5.</span><a href="../Learning-from-the-Earthworks/index.html">Learning from the Earthworks</a></li>
+                <li><span class="num">6.</span><a href="../Within-the-Community/index.html">Within the Community</a></li>
+                <li><span class="num">7.</span><a href="../Prototypical-Infrastructure-on-the-LA-River/index.html">Prototypical Infrastructure</a></li>
+                <li><span class="num">8.</span><a href="../Super-Public/index.html">Super Public</a></li>
+                <li><span class="num">9.</span><a href="../Co-Living-Landscape/index.html">Co-Living Landscape</a></li>
+            </ol>
+        </div>
+        <div style="margin-top: auto; font-size: 0.9rem; color: var(--color-caption);"> © 2026 LCT. </div>
+    </aside>
+
+    <main class="main-content">
+        <div class="content-container">
+            
+            <div class="header-row">
+                <h1 class="fw-medium"><a href="./index.html">A Darkroom inside a Room</a></h1>
+                <a href="../LCT.html" class="index-link-inline">Index</a>
+            </div>
+            <p class="project-subtitle">From Mask to Exposure</p>
+            <div class="project-meta"> 
+                Year: 2025<br> 
+                Type: GSAPP Elective Project (Individual Work)<br> 
+                Location: Taipei<br> 
+                [cite_start]Instructor: Christoph a Kumpusch [cite: 14]
+            </div>
+            
+            <div class="media-item"> 
+                <img src="Untitled-2-02.jpg" alt="Cinematic Montage"> 
+            </div>
+            <div class="text-columns">
+                <div class="text-col-left">
+                    <h3>Cinematic Reference: The Terrorizers (1986)</h3>
+                </div>
+                <div class="text-col-right">
+                    <p class="text-body">Inspired by Edward Yang's depiction of Taipei's urban solitude, specifically the photographer's darkroom. [cite_start]The design translates the film's atmospheric tension—the drifting photographs, the sudden intrusion of light upon curtain opening, and the shifting boundaries between observer and observed—into an architectural mechanism. [cite: 2, 3]</p>
+                </div>
+            </div>
+
+            <div class="media-item"> 
+                <img src="Untitled-2-05.jpg" alt="Model and Axon"> 
+            </div>
+            <div class="text-columns">
+                <div class="text-col-left">
+                    <h3>The Pivot & The Platform</h3>
+                </div>
+                <div class="text-col-right">
+                    <p class="text-body">Two kinetic elements renegotiate the boundary between darkroom and platform. The Pivot Door functions as a mask; its rotation is an act of "unmasking," projecting the black interior into the white exterior.</p>
+                    <p class="text-body">The Unfolding Platform breaks the hermetic seal, extending the floor to create a semi-outdoor interface. [cite_start]Sharing identical geometric logic in plan and section—a rotating quarter-circle void—the design operates as a coherent machine for light control. [cite: 5, 6, 7]</p>
+                </div>
+            </div>
+
+            <div class="media-item"> 
+                <img src="Untitled-2-03.jpg" alt="Plan"> 
+            </div>
+            <div class="text-columns">
+                <div class="text-col-left">
+                    <h3>A Darkroom inside a Room</h3>
+                </div>
+                <div class="text-col-right">
+                    <p class="text-body">This project explores the dialectic of light and enclosure through a "box" situated between interior and exterior. [cite_start]Inspired by the duality of a mask—concealing while defining a face—the architecture functions as a mechanical apparatus. [cite: 9]</p>
+                </div>
+            </div>
+
+            <div class="media-item"> 
+                <img src="Untitled-2-04.jpg" alt="Section"> 
+            </div>
+            <div class="text-columns">
+                <div class="text-col-left">
+                    <h3>From Mask to Exposure</h3>
+                </div>
+                <div class="text-col-right">
+                    <p class="text-body">It begins as a sealed darkroom. Through the unfolding of its skin, the darkroom breathes, transforming from a hermetic void into a theater of exposure.</p>
+                    [cite_start]<p class="text-body">The opening of the pivot door is not merely a functional act but a spatial event: the black interior expands to claim the exterior, while natural light penetrates to rewrite the room's atmosphere. [cite: 11, 12]</p>
+                </div>
+            </div>
+
+            <div class="media-item"> 
+                <img src="01_Drawing_Detail_ChaoTang Lin_cl4743.jpg" alt="Pivot Door Detail"> 
+            </div>
+            <div class="text-columns">
+                <div class="text-col-left">
+                    <h3>Technical Detail: The Pivot Mechanism</h3>
+                </div>
+                <div class="text-col-right">
+                    <p class="text-body">Detail section of the pivot door.</p>
+                </div>
+            </div>
+
+            <div class="media-item">
+                <video controls loop muted playsinline width="100%">
+                    <source src="04_Model Video01_ChaoTang Lin_cl4743.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            </div>
+
+            <div class="media-item">
+                <video controls loop muted playsinline width="100%">
+                    <source src="04_Model Video02_ChaoTang Lin_cl4743.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            </div>
+
+        </div>
+    </main>
+
+    <div class="mobile-footer">
+        <a onclick="window.scrollTo({top: 0, behavior: 'smooth'});">Top</a>
+        <a href="javascript:void(0)" onclick="toggleMobileMenu()">Index</a>
+    </div>
+
+    <div id="info-overlay">
+        <div class="overlay-wrapper">
+            <aside class="overlay-sidebar">
+                <div class="mobile-header" style="position: absolute; top:0; left:0; border:none; background:transparent;">
+                     <a href="#">LCT</a>
+                     <a href="javascript:void(0)" onclick="toggleOverlay()">Close</a>
+                </div>
+                
+                <div class="site-title mobile-hidden"><a href="#" onclick="toggleOverlay()">LCT</a><br></div>
+                <div class="nav-links mobile-hidden">
+                    <a href="#" class="active" onclick="toggleOverlay()">Information</a>
+                    <a href="mailto:your.email@example.com">Email</a>
+                    <a href="https://www.linkedin.com/in/yourprofile" target="_blank">Linkedin</a>
+                </div>
+                <div style="margin-top: 0;">
+                    <img src="../About/Untitled-5.jpg" alt="Portrait" class="profile-photo">
+                    <div class="bio-text">
+                        <p>Chao Tang Lin is a Taiwanese architect and researcher based in New York, currently pursuing a Master of Science in Advanced Architectural Design at Columbia GSAPP (’26). His professional experience at KRIS YAO | ARTECH involved large-scale office and hospital projects, urban renewal strategies, and curtain wall design, grounding his design practice in both technical rigor and contextual sensitivity. His research explores the intersections of temporality, energy, ecology, and adaptation, reframing the relationship between body, environment, and architecture. Through design and critical inquiry, he seeks to cultivate new ways of perceiving.</p>
+                    </div>
+                </div>
+            </aside>
+            <main class="overlay-content">
+                <div class="header-row mobile-hidden">
+                    <h1 class="fw-medium">Information</h1>
+                    <a href="#" class="index-link-inline" onclick="toggleOverlay()">Close</a>
+                </div>
+                <div class="cv-container">
+                    <div class="text-columns">
+                        <div class="text-col-left"><h3>Education</h3></div>
+                        <div class="text-col-right">
+                            <div class="cv-item"><div class="cv-title">Columbia University</div><div class="text-body">GSAPP, MS. Advanced Architectural Design</div><div class="text-caption">05/2025-05/2026, New York, US</div></div>
+                            <div class="cv-item"><div class="cv-title">Tunghai University</div><div class="text-body">Bachelor of Architecture</div><div class="text-caption">09/2014-06/2019, Taichung, Taiwan</div></div>
+                        </div>
+                    </div>
+                    
+                    <div class="text-columns">
+                        <div class="text-col-left"><h3>Professional Experience</h3></div>
+                        <div class="text-col-right">
+                            <div class="cv-item"><div class="cv-title">KRIS YAO | ARTECH</div><div class="text-body">Architectural Designer</div><div class="text-caption">06/2020-01/2024, Taipei, Taiwan</div></div>
+                            <div class="cv-item"><div class="cv-title">Chien Architects & Associates</div><div class="text-body">Architectural Intern</div><div class="text-caption">07/2018-08/2018, Taipei, Taiwan</div></div>
+                            <div class="cv-item"><div class="cv-title">FieldEvo Design Studio + LinBoYang Architects</div><div class="text-body">Architectural Intern</div><div class="text-caption">07/2016-08/2016, Taipei, Taiwan</div></div>
+                        </div>
+                    </div>
+                    <div class="text-columns">
+                        <div class="text-col-left"><h3>License</h3></div>
+                        <div class="text-col-right">
+                            <div class="cv-item"><div class="text-body">Registered Architect</div><div class="text-caption">Issued by Ministry of the Interior (Taiwan)</div></div>
+                        </div>
+                    </div>
+                    <div class="text-columns">
+                        <div class="text-col-left"><h3>Skills</h3></div>
+                        <div class="text-col-right">
+                            <div class="cv-item"><div class="cv-title">Design</div><div class="text-body">Adobe Suite (Ps, Ai, Id, Pr), AutoCAD, SketchUp, Rhino, Revit, V-ray, Enscape</div></div>
+                            <div class="cv-item"><div class="cv-title">Research</div><div class="text-body">Microsoft Office Suite, QGIS</div></div>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <div id="mobile-menu-overlay">
+        <div class="mobile-header" style="position: absolute; border: none; background: transparent;">
+            <a href="#">LCT</a>
+            <a href="javascript:void(0)" onclick="toggleMobileMenu()">Close</a>
+        </div>
+        
+        <div class="menu-content">
+            <div class="menu-group">
+                <div class="menu-links">
+                    <a onclick="toggleMobileMenu(); setTimeout(toggleOverlay, 50);">Information</a>
+                    <a href="mailto:your.email@example.com">Email</a>
+                    <a href="https://www.linkedin.com/in/yourprofile" target="_blank">Linkedin</a>
+                </div>
+            </div>
+
+            <div class="menu-group">
+                <div class="menu-links">
+                    <a href="javascript:void(0);">Projects</a> 
+                    <a href="./index.html">1. A Darkroom inside a Room</a>
+                    <a href="../The Albedo Archive/index.html">2. The Albedo Archive</a>
+                    <a href="../Below-the-Wugu-Mountain/index.html">3. Below the Wugu Mountain</a>
+                    <a href="../Drawing-A-Line-on-the-Ground-Map/index.html">4. Drawing A Line on the Ground Map</a>
+                    <a href="../Learning-from-the-Earthworks/index.html">5. Learning from the Earthworks</a>
+                    <a href="../Within-the-Community/index.html">6. Within the Community</a>
+                    <a href="../Prototypical-Infrastructure-on-the-LA-River/index.html">7. Prototypical Infrastructure</a>
+                    <a href="../Super-Public/index.html">8. Super Public</a>
+                    <a href="../Co-Living-Landscape/index.html">9. Co-Living Landscape</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function toggleOverlay() {
+            var overlay = document.getElementById("info-overlay");
+            var body = document.body;
+            var scrollbarWidth = window.innerWidth - document.documentElement.clientWidth;
+
+            if (overlay.style.display === "block") {
+                overlay.style.display = "none";
+                body.style.overflow = "auto";
+                body.style.paddingRight = "";
+            } else {
+                overlay.style.display = "block";
+                body.style.overflow = "hidden";
+                body.style.paddingRight = scrollbarWidth + "px";
+            }
+        }
+
+        function toggleMobileMenu() {
+            var menu = document.getElementById("mobile-menu-overlay");
+            var body = document.body;
+            var scrollbarWidth = window.innerWidth - document.documentElement.clientWidth;
+
+            if (menu.style.display === "block") {
+                menu.style.display = "none";
+                body.style.overflow = "auto";
+                body.style.paddingRight = "";
+            } else {
+                menu.style.display = "block";
+                body.style.overflow = "hidden";
+                body.style.paddingRight = scrollbarWidth + "px";
+            }
+        }
+    </script>
+
+</body>
+</html>
+
+```

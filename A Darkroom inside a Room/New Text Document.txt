@@ -1,0 +1,69 @@
+這份整理針對 **A Darkroom inside a Room** 案子，已將關於幾何邏輯的文字移回前面的模型軸測圖區塊，大樣圖則保留純粹的技術標題。
+
+---
+
+### **Content Flow (由上而下)**
+
+#### **1. [Image] 模型與軸測圖 (Model & Axon)**
+
+**(Filename: `Untitled-2-05`)**
+
+This project explores the dialectic of light and enclosure through a "box" situated
+between interior and exterior. Inspired by the duality of a mask—concealing
+while defining a face—the architecture functions as a mechanical apparatus.
+It begins as a sealed darkroom. Through the unfolding of its skin, the darkroom
+breathes, transforming from a hermetic void into a theater of exposure. The
+opening of the pivot door is not merely a functional act but a spatial event: the
+black interior expands to claim the exterior, while natural light penetrates to
+rewrite the room's atmosphere.
+
+
+#### **2. [Image] 電影蒙太奇 (Cinematic Montage)**
+
+**(Filename: `Untitled-2-02`)**
+
+> **Cinematic Reference: The Terrorizers (1986)**
+> Inspired by Edward Yang's depiction of Taipei's urban solitude, specifically the photographer's darkroom . The design translates the film's atmospheric tension—the drifting photographs, the sudden intrusion of light upon curtain opening, and the shifting boundaries between observer and observed—into an architectural mechanism.
+> 
+> 
+
+
+> 
+
+#### **3. [Image] 平面圖 (Plan)**
+
+**(Filename: `Untitled-2-03`)**
+
+
+
+#### **4. [Image] 剖面圖 (Section)**
+
+**(Filename: `Untitled-2-04`)**
+
+The Pivot & The Platform
+Two kinetic elements renegotiate the boundary between darkroom and platform.
+The Pivot Door functions as a mask; its rotation is an act of "unmasking," projecting
+the black interior into the white exterior. The Unfolding Platform breaks the hermetic
+seal, extending the floor to create a semi-outdoor interface. Sharing identical
+geometric logic in plan and section—a rotating quarter-circle void—the design
+operates as a coherent machine for light control.
+> 
+
+#### **5. [Image] 旋轉門大樣圖 (Pivot Door Detail)**
+
+**(Filename: `01_Drawing_Detail_ChaoTang Lin_cl4743`)**
+
+> **Technical Detail: The Pivot Mechanism**
+> Detail section of the pivot door.
+
+---
+
+### **Video Section (結尾)**
+
+#### **6. [Video] 模型動態展示**
+
+**(Filename: `04_Model Video01_ChaoTang Lin_cl4743`)**
+
+#### **7. [Video] 模型動態展示**
+
+**(Filename: `04_Model Video02_ChaoTang Lin_cl4743`)**

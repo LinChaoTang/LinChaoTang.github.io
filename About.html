@@ -3,298 +3,454 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LCT - About</title>
+    <title>LCT - Information</title>
+    
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css?family=Inter:500" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;900&display=swap" rel="stylesheet">
+
     <style>
-        /* Basic Reset & Font */
-        body, html {
+        :root {
+            /* 1. 核心尺寸 */
+            --base-size: 19px;
+            --gutter: 1rem; 
+            --sidebar-width: 50%;
+            --page-padding: 1rem; 
+            
+            /* 垂直間距 */
+            --section-spacing: 1.25rem; 
+            
+            /* 2. 顏色系統 */
+            --color-text: rgba(0, 0, 0, 0.85);
+            --color-secondary: rgba(0, 0, 0, 0.75);
+            --color-caption: rgba(0, 0, 0, 0.4);
+            
+            /* 背景設定為微透明白底，模擬 Overlay 效果 */
+            --color-bg: rgba(255, 255, 255, 0.96); 
+        }
+
+        html {
+            font-size: var(--base-size);
+            font-family: 'Inter', Helvetica, Arial, sans-serif;
+            -webkit-font-smoothing: antialiased;
+            background-color: transparent; 
+            letter-spacing: -0.02em; 
+            height: 100%;
+        }
+
+        body {
             margin: 0;
             padding: 0;
-            font-family: 'Inter', Helvetica, sans-serif;
-            background-color: #fff;
-            /* height: 100% and overflow: hidden removed to fix position:fixed behavior */
+            color: var(--color-text);
+            line-height: 1.1; 
+            overflow-x: hidden;
+            background-color: var(--color-bg); 
+            min-height: 100%;
         }
 
-        * {
-            box-sizing: border-box;
+        a { text-decoration: none; color: inherit; border-bottom: none; }
+        a:hover { color: var(--color-text); }
+        ul, ol { margin: 0; padding: 0; list-style: none; }
+        
+        h1, h2, h3, h4, p { margin: 0; font-weight: 400; line-height: 1; }
+
+        /* --- 字體樣式工具 --- */
+        .fw-medium { font-weight: 500; }
+        .text-caption { color: var(--color-caption); font-size: 1rem; }
+        
+        .text-body { 
+            font-size: 1.2rem; 
+            line-height: 1.15; 
+            margin-bottom: 0.25rem; 
+            color: var(--color-text); 
         }
 
-        /* Left Navigation */
-        #left-nav {
+        .cv-item { margin-bottom: 1.5rem; }
+        .cv-title { font-weight: 500; margin-bottom: 0.2rem; font-size: 1.2rem; }
+        
+        /* ------------------------------------------------
+           佈局核心 (與 Index 完全一致)
+           ------------------------------------------------ */
+        .left-sidebar {
             position: fixed;
-            top: 32px;
-            left: 30px;
-            width: 220px;
+            top: 0;
+            left: 0;
+            width: var(--sidebar-width);
+            height: 100vh;
+            padding: var(--page-padding);
+            box-sizing: border-box;
             z-index: 10;
             display: flex;
             flex-direction: column;
+            justify-content: flex-start;
+            overflow-y: auto; 
+            padding-right: 3rem; 
         }
 
-        .nav-item {
-            height: 80px;
-            font-weight: 500;
-            color: rgba(0, 0, 0, 0.95);
+        .main-content {
+            margin-left: var(--sidebar-width);
+            width: calc(100% - var(--sidebar-width));
+            min-height: 100vh;
+            position: relative;
+            z-index: 1;
+            padding-top: var(--page-padding);
+            padding-bottom: 4rem;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end; 
+        }
+
+        .content-container {
+            width: 100%; 
+            padding-right: var(--page-padding);
+            padding-left: 1.5rem; 
+            box-sizing: border-box;
+        }
+
+        /* ------------------------------------------------
+           About 頁面專屬佈局
+           ------------------------------------------------ */
+        .profile-photo {
+            width: 100%;
+            max-width: 450px;
+            margin-bottom: 1.5rem;
+            display: block;
+            background-color: rgba(0,0,0,0.05);
+        }
+        .bio-text {
+            font-size: 1.2rem;
+            line-height: 1.3;
+            color: var(--color-text);
+            max-width: 80%;
+        }
+
+        /* [新增] 雙內容顯示/隱藏邏輯 */
+        .mobile-bio-block { display: none; }
+
+        /* ------------------------------------------------
+           通用元件樣式
+           ------------------------------------------------ */
+        .header-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 3.5rem; 
+            width: 100%;
+        }
+
+        .header-row h1 {
+            font-size: 2.2rem; 
+            line-height: 1;
+            color: var(--color-text);
+            letter-spacing: -0.03em;
+        }
+
+        .index-link-inline {
+            font-size: 2rem; 
+            color: var(--color-secondary);
+            text-align: right;
+            white-space: nowrap;
+            line-height: 1;
+            margin-top: 0; 
+            font-weight: 500; 
             cursor: pointer;
-            text-decoration: none;
-            font-size: 15px;
-            letter-spacing: -0.15px;
         }
 
-        .lct-title-style {
-            font-size: 20px;
-            letter-spacing: -0.2px;
+        /* 左側選單 */
+        .site-title { 
+            font-size: 2rem; 
+            margin-bottom: 3.5rem; 
+            color: var(--color-text); 
+            line-height: 1.1;
+            font-weight: 900; 
         }
+        .nav-links { 
+            margin-bottom: 3.5rem; 
+            font-size: 2rem; 
+            line-height: 1.1; 
+        }
+        .nav-links a { 
+            display: block; 
+            color: var(--color-secondary); 
+            font-weight: 500; 
+            margin-bottom: 0.1em;
+        }
+        .nav-links a.active { color: var(--color-text); }
+        
+        .mobile-header { display: none; }
 
-        /* Right Placeholder Sidebar */
-        .right-sidebar-placeholder {
+        /* CV 欄位 (右側) */
+        .text-columns {
+            display: flex;
+            gap: 2rem;
+            margin-bottom: 3rem;
+            width: 100%;
+        }
+        .text-columns:last-child { margin-bottom: 0; }
+        .text-col-left { flex: 0 0 35%; }
+        .text-col-right { flex: 1; }
+        
+        .text-columns h3 { 
+            font-size: 1.2rem; 
+            color: var(--color-text); 
+            line-height: 1.15; 
+            font-weight: 500; 
+            margin-top: 0.1rem; 
+        }
+        
+        .footer {
             position: fixed;
-            top: 28px;
-            right: 30px;
-            width: 220px;
+            bottom: 0;
+            left: 0;
+            padding: var(--page-padding);
+            font-size: 1rem;
+            color: var(--color-caption);
             z-index: 20;
         }
 
-        /* Main Content Wrapper - EXACTLY LIKE HOMEPAGE */
-        .main-content {
-            width: 940px;
-            margin: 0 auto;
-            padding-top: 28px;
-            height: 100vh;
-            display: flex;
-            flex-direction: column;
-        }
+        /* RWD */
+        @media (max-width: 900px) {
+            :root { --sidebar-width: 0px; }
 
-        /* Flexbox container for the two columns */
-        .about-container {
-            display: flex;
-            flex-grow: 1;
-            min-height: 0;
-            gap: 20px; /* Matches homepage gap */
-        }
-
-        /* Left Column (Photo & Intro) - Proportional */
-        .about-left-column {
-            flex: 1; /* Takes 50% of the space */
-            min-width: 0;
-        }
-
-        /* Right Column (Resume) - Proportional & Scrollable */
-        .about-right-column {
-            flex: 1; /* Takes 50% of the space */
-            min-width: 0;
-            overflow-y: auto; /* Enable scrolling */
-            scrollbar-width: none; /* Hide scrollbar for Firefox */
-        }
-
-        /* Hide scrollbar for Webkit browsers (Chrome, Safari) */
-        .about-right-column::-webkit-scrollbar {
-            display: none;
-        }
-
-        .about-photo {
-            width: 100%;
-            height: auto;
-            display: block;
-            margin-bottom: 40px;
-        }
-
-        .about-intro-text {
-            font-size: 15px;
-            line-height: 24px; /* Changed to 24px */
-            color: rgba(0, 0, 0, 0.85);
-        }
-
-        .resume-section {
-            margin-bottom: 30px;
-        }
-
-        .resume-section h3 {
-            font-size: 18px;
-            margin-top: 0;
-            margin-bottom: 10px;
-            color: rgba(0, 0, 0, 0.95);
-        }
-
-        .resume-section p {
-            font-size: 15px;
-            line-height: 24px; /* Changed to 24px */
-            margin-bottom: 5px;
-            color: rgba(0, 0, 0, 0.85);
-        }
-
-        /* Responsive adjustments - EXACTLY LIKE HOMEPAGE */
-        @media (max-width: 1420px) {
-            .main-content {
-                width: auto;
-                margin: 0 270px;
-            }
-        }
-
-        @media (max-width: 1099px) {
-            body, html {
-                overflow: auto; /* Allow body to scroll on mobile */
-                height: auto;
-            }
-
-            #left-nav {
-                position: static; /* IMPORTANT: Puts nav in normal document flow */
-                width: 100%;
-                padding: 32px 30px; /* Match desktop top/left positioning */
-                box-sizing: border-box; /* Ensures padding is included in width */
-                height: auto;
-                /* border-bottom: 1px solid #eee; Removed horizontal line */
-                z-index: 1;
-                /* flex-direction: column; is inherited, keeping it vertical */
-            }
-            #left-nav .nav-item:not(.lct-title-style) { /* Hide Projects and About links */
-                display: none;
-            }
+            /* [修改] 隱藏左側欄位，並顯示手機版 Header */
+            .left-sidebar, .footer { display: none; }
+            .desktop-bio-block { display: none; } /* 隱藏桌面版簡介 */
             
-            
-
-            .right-sidebar-placeholder {
-                display: none;
+            .mobile-bio-block { 
+                display: block; 
+                margin-bottom: 3rem; /* 手機版簡介與履歷的間距 */
             }
 
-            /* Removed #left-nav and .right-sidebar-placeholder styles as they are no longer in HTML */
-
-            .main-content {
-                width: 100%;
-                margin: 0;
-                padding: 20px;
-                height: auto;
-                overflow: visible;
-            }
-
-            /* Mobile Footer */
-            .mobile-footer {
+            .mobile-header {
                 display: flex;
                 justify-content: space-between;
-                max-width: 740px; /* Adjust as needed */
-                margin: 0 auto;
-                padding: 40px 30px;
+                padding: 1rem;
+                position: sticky;
+                top: 0;
+                background: rgba(255, 255, 255, 0.96);
+                z-index: 90;
+                border-bottom: 1px solid var(--color-line);
             }
-            .mobile-footer a {
-                text-decoration: none;
-                font-size: 15px;
-                font-weight: 500;
-                color: rgba(0, 0, 0, 0.95);
-            }
+            .mobile-header a { font-size: 1.2rem; font-weight: 500; }
 
-            .about-container {
-                flex-direction: column;
-                gap: 40px;
+            .main-content { 
+                margin-left: 0; width: 100%; 
+                align-items: flex-start;
+                padding: 1rem; padding-top: 0; 
             }
-
-            .about-right-column {
-                overflow-y: visible;
+            
+            .content-container { 
+                width: 100%; 
+                padding-left: 0; 
+                padding-right: 0; 
             }
+            
+            .index-link-inline { display: none; }
+            
+            .header-row { margin-bottom: 2rem; }
+            .header-row h1 { font-size: 1.8rem; }
+            
+            .text-columns { flex-direction: column; gap: 0.5rem; margin-bottom: 2.5rem; }
+            .text-col-left { margin-bottom: 0.25rem; }
+            .cv-item { margin-bottom: 1.2rem; }
         }
     </style>
 </head>
 <body>
-    <!-- Sidebar Navigation -->
-    <nav id="left-nav">
-        <a href="LCT.html" class="nav-item lct-title-style">LCT</a>
-        <a href="LCT.html" class="nav-item">Projects</a>
-        <a href="About.html" class="nav-item">About</a>
-    </nav>
 
-    <!-- Right Placeholder Sidebar -->
-    <aside class="right-sidebar-placeholder"></aside>
-    
-    
+    <div class="mobile-header">
+        <a href="index.html">LCT</a>
+        <a href="index.html">Close</a>
+    </div>
 
-    <!-- Main Content -->
-    <main class="main-content">
-        <div class="about-container">
-            <!-- Left Column -->
-            <div class="about-left-column">
-                <img class="about-photo" src="./About/Untitled-5.jpg" alt="Profile Photo">
-                <p class="about-intro-text">
-                    Chao Tang Lin is a Taiwanese architect and researcher based in New York, currently pursuing a Master of Science in Advanced Architectural Design at Columbia GSAPP (’26). His professional experience at KRIS YAO | ARTECH involved large-scale office and hospital projects, urban renewal strategies, and curtain wall design, grounding his design practice in both technical rigor and contextual sensitivity. His research explores the intersections of temporality, energy, ecology, and adaptation, reframing the relationship between body, environment, and architecture. Through design and critical inquiry, he seeks to cultivate new ways of perceiving.
-                </p>
-            </div>
-            <!-- Right Column (Scrollable) -->
-            <div class="about-right-column">
-                <div class="resume-section">
-                    <h3>EDUCATION</h3>
-                    <p><strong>Columbia University</strong><br>
-                    GSAPP, MS. Advanced Architectural Design<br>
-                    05/2025-05/2026, New York, US</p>
-                    <p><strong>Tunghai University</strong><br>
-                    Bachelor of Architecture<br>
-                    09/2014-06/2019, Taichung, Taiwan</p>
-                </div>
-                <div class="resume-section">
-                    <h3>PROFESSIONAL EXPERIENCE</h3>
-                    <p><strong>KRIS YAO | ARTECH</strong><br>
-                    Architectural Designer<br>
-                    06/2020-01/2024, Taipei, Taiwan</p>
-                    <p><strong>Chien Architects & Associates</strong><br>
-                    Architectural Intern<br>
-                    07/2018-08/2018, Taipei, Taiwan</p>
-                    <p><strong>FieldEvo Design Studio + LinBoYang Architects</strong><br>
-                    Architectural Intern<br>
-                    07/2016-08/2016, Taipei, Taiwan</p>
-                </div>
-                <div class="resume-section">
-                    <h3>LICENSE</h3>
-                    <p>Registered Architect<br>
-                    Issued by Ministry of the Interior (Taiwan)</p>
-                </div>
-                <div class="resume-section">
-                    <h3>ACADEMIC EXPERIENCE</h3>
-                    <p><strong>"Super Taichung: Green Park Lane"</strong><br>
-                    Workshop & Exhibition<br>
-                    11/2018</p>
-                    <p><strong>Tunghai University HONG, WEN-XIONG Memorial Competition</strong><br>
-                    Honorable Mention<br>
-                    02/2018</p>
-                    <p><strong>THU x HKCU Joint Design Studio</strong><br>
-                    Hong Kong, 09/2017</p>
-                    <p><strong>Tunghai University Summer Workshop in Rome</strong><br>
-                    Rome, Italy, 07/2017</p>
-                    <p><strong>THU x UTAR Melaka Joint Studio</strong><br>
-                    Melaka, Malaysia, 03/2017</p>
-                    <p><strong>Tsinghua University Urban Design Workshop</strong><br>
-                    Beijing, China, 07/2016</p>
-                </div>
-                <div class="resume-section">
-                    <h3>EXHIBITION</h3>
-                    <p><strong>"Below the Wugu Mountain"</strong><br>
-                    Video Installation, 691 Art Gallery<br>
-                    12/2021</p>
-                    <p><strong>Tunghai University Department of Architecture Graduation Exhibition</strong><br>
-                    06/2019</p>
-                </div>
-                <div class="resume-section">
-                    <h3>PUBLICATION</h3>
-                    <p><strong>Photography Book: "Grand Hotel, Another Wing, Eye"</strong><br>
-                    Co-author<br>
-                    06/2022</p>
-                    <p><strong>Tunghai University Department of Architecture Graduation Magazine</strong><br>
-                    01/2019</p>
-                    <p><strong>THU x HKCU Joint Design Studio Compilation</strong><br>
-                    09/2018</p>
-                </div>
-                <div class="resume-section">
-                    <h3>SKILLS</h3>
-                    <p><strong>Design</strong><br>
-                    Adobe Suite (Ps, Ai, Id, Pr), AutoCAD, SketchUp, Rhino, Revit, V-ray, Enscape</p>
-                    <p><strong>Research</strong><br>
-                    Microsoft Office Suite, QGIS</p>
-                    <p><strong>Fabrication</strong><br>
-                    Physical Model Making, laser cutting, 3D Printing, CNC</p>
-                </div>
+    <aside class="left-sidebar">
+        <div class="site-title">
+            <a href="index.html">LCT</a><br>
+        </div>
+        <div class="nav-links">
+            <a href="#" class="active">Information</a>
+            <a href="mailto:linchaotangus@gmail.com">Email</a>
+            <a href="https://www.linkedin.com/in/chaotang-lin-aaa25436a">Linkedin</a>
+        </div>
+        
+        <!-- [新增] 桌面版簡介區塊 (預設顯示) -->
+        <div class="desktop-bio-block" style="margin-top: 0;">
+            <img src="./About/Untitled-5.jpg" alt="Portrait" class="profile-photo">
+            <div class="bio-text">
+                <p>Chao Tang Lin is a Taiwanese architect and researcher based in New York, currently pursuing a Master of Science in Advanced Architectural Design at Columbia GSAPP (’26). His professional experience at KRIS YAO | ARTECH involved large-scale office and hospital projects, urban renewal strategies, and curtain wall design, grounding his design practice in both technical rigor and contextual sensitivity. His research explores the intersections of temporality, energy, ecology, and adaptation, reframing the relationship between body, environment, and architecture. Through design and critical inquiry, he seeks to cultivate new ways of perceiving.</p>
             </div>
         </div>
+
+        <div style="margin-top: auto; font-size: 0.9rem; color: var(--color-caption);">
+            © 2026 LCT.
+        </div>
+    </aside>
+
+    <main class="main-content">
+        <div class="content-container">
+            
+            <div class="header-row">
+                <h1 class="fw-medium">Information</h1>
+                <a href="index.html" class="index-link-inline">Close</a>
+            </div>
+
+            <!-- [新增] 手機版簡介區塊 (預設隱藏) -->
+            <div class="mobile-bio-block">
+                <img src="./About/Untitled-5.jpg" alt="Portrait" class="profile-photo">
+                <div class="bio-text">
+                    <p>Chao Tang Lin is a Taiwanese architect and researcher based in New York, currently pursuing a Master of Science in Advanced Architectural Design at Columbia GSAPP (’26). His professional experience at KRIS YAO | ARTECH involved large-scale office and hospital projects, urban renewal strategies, and curtain wall design, grounding his design practice in both technical rigor and contextual sensitivity. His research explores the intersections of temporality, energy, ecology, and adaptation, reframing the relationship between body, environment, and architecture. Through design and critical inquiry, he seeks to cultivate new ways of perceiving.</p>
+                </div>
+            </div>
+
+                            <!-- 右欄：履歷 -->
+                            <div class="about-right-col">
+                                <div class="text-columns">
+                                    <div class="text-col-left">
+                                        <h3>Education</h3>
+                                    </div>
+                                    <div class="text-col-right">
+                                        <div class="cv-item">
+                                            <div class="cv-title">Columbia University</div>
+                                            <div class="text-body">GSAPP, MS. Advanced Architectural Design</div>
+                                            <div class="text-caption">05/2025-05/2026, New York, US</div>
+                                        </div>
+                                        <div class="cv-item">
+                                            <div class="cv-title">Tunghai University</div>
+                                            <div class="text-body">Bachelor of Architecture</div>
+                                            <div class="text-caption">09/2014-06/2019, Taichung, Taiwan</div>
+                                        </div>
+                                    </div>
+                                </div>
+                    
+                                <div class="text-columns">
+                                    <div class="text-col-left">
+                                        <h3>PROFESSIONAL EXPERIENCE</h3>
+                                    </div>
+                                    <div class="text-col-right">
+                                        <div class="cv-item">
+                                            <div class="cv-title">KRIS YAO | ARTECH</div>
+                                            <div class="text-body">Architectural Designer</div>
+                                            <div class="text-caption">06/2020-01/2024, Taipei, Taiwan</div>
+                                        </div>
+                                        <div class="cv-item">
+                                            <div class="cv-title">Chien Architects & Associates</div>
+                                            <div class="text-body">Architectural Intern</div>
+                                            <div class="text-caption">07/2018-08/2018, Taipei, Taiwan</div>
+                                        </div>
+                                        <div class="cv-item">
+                                            <div class="cv-title">FieldEvo Design Studio + LinBoYang Architects</div>
+                                            <div class="text-body">Architectural Intern</div>
+                                            <div class="text-caption">07/2016-08/2016, Taipei, Taiwan</div>
+                                        </div>
+                                    </div>
+                                </div>
+            
+                                <div class="text-columns">
+                                    <div class="text-col-left">
+                                        <h3>LICENSE</h3>
+                                    </div>
+                                    <div class="text-col-right">
+                                        <div class="cv-item">
+                                            <div class="text-body">Registered Architect</div>
+                                            <div class="text-caption">Issued by Ministry of the Interior (Taiwan)</div>
+                                        </div>
+                                    </div>
+                                </div>
+            
+                                <div class="text-columns">
+                                    <div class="text-col-left">
+                                        <h3>ACADEMIC EXPERIENCE</h3>
+                                    </div>
+                                    <div class="text-col-right">
+                                         <div class="cv-item">
+                                            <div class="cv-title">"Super Taichung: Green Park Lane"</div>
+                                            <div class="text-body">Workshop & Exhibition</div>
+                                            <div class="text-caption">11/2018</div>
+                                        </div>
+                                        <div class="cv-item">
+                                            <div class="cv-title">Tunghai University HONG, WEN-XIONG Memorial Competition</div>
+                                            <div class="text-body">Honorable Mention</div>
+                                            <div class="text-caption">02/2018</div>
+                                        </div>
+                                        <div class="cv-item">
+                                            <div class="cv-title">THU x HKCU Joint Design Studio</div>
+                                            <div class="text-caption">Hong Kong, 09/2017</div>
+                                        </div>
+                                        <div class="cv-item">
+                                            <div class="cv-title">Tunghai University Summer Workshop in Rome</div>
+                                            <div class="text-caption">Rome, Italy, 07/2017</div>
+                                        </div>
+                                        <div class="cv-item">
+                                            <div class="cv-title">THU x UTAR Melaka Joint Studio</div>
+                                            <div class="text-caption">Melaka, Malaysia, 03/2017</div>
+                                        </div>
+                                        <div class="cv-item">
+                                            <div class="cv-title">Tsinghua University Urban Design Workshop</div>
+                                            <div class="text-caption">Beijing, China, 07/2016</div>
+                                        </div>
+                                    </div>
+                                </div>
+                    
+                                <div class="text-columns">
+                                    <div class="text-col-left">
+                                        <h3>Exhibitions</h3>
+                                    </div>
+                                    <div class="text-col-right">
+                                        <div class="cv-item">
+                                            <div class="cv-title">"Below the Wugu Mountain"</div>
+                                            <div class="text-body">Video Installation, 691 Art Gallery</div>
+                                            <div class="text-caption">12/2021</div>
+                                        </div>
+                                        <div class="cv-item">
+                                            <div class="cv-title">Tunghai University Department of Architecture Graduation Exhibition</div>
+                                            <div class="text-caption">06/2019</div>
+                                        </div>
+                                    </div>
+                                </div>
+                    
+                                <div class="text-columns">
+                                    <div class="text-col-left">
+                                        <h3>Publication</h3>
+                                    </div>
+                                    <div class="text-col-right">
+                                        <div class="cv-item">
+                                            <div class="cv-title">Photography Book: "Grand Hotel, Another Wing, Eye"</div>
+                                            <div class="text-body">Co-author</div>
+                                            <div class="text-caption">06/2022</div>
+                                        </div>
+                                        <div class="cv-item">
+                                            <div class="cv-title">Tunghai University Department of Architecture Graduation Magazine</div>
+                                            <div class="text-caption">01/2019</div>
+                                        </div>
+                                        <div class="cv-item">
+                                            <div class="cv-title">THU x HKCU Joint Design Studio Compilation</div>
+                                            <div class="text-caption">09/2018</div>
+                                        </div>
+                                    </div>
+                                </div>
+                    
+                                <div class="text-columns">
+                                    <div class="text-col-left">
+                                        <h3>Skills</h3>
+                                    </div>
+                                    <div class="text-col-right">
+                                        <div class="cv-item">
+                                            <div class="cv-title">Design</div>
+                                            <div class="text-body">Adobe Suite (Ps, Ai, Id, Pr), AutoCAD, SketchUp, Rhino, Revit, V-ray, Enscape</div>
+                                        </div>
+                                        <div class="cv-item">
+                                            <div class="cv-title">Research</div>
+                                            <div class="text-body">Microsoft Office Suite, QGIS</div>
+                                        </div>
+                                        <div class="cv-item">
+                                            <div class="cv-title">Fabrication</div>
+                                            <div class="text-body">Physical Model Making, laser cutting, 3D Printing, CNC</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+        </div>
     </main>
-        <footer class="mobile-footer">
-        <a href="LCT.html">Projects</a>
-        <a href="About.html">About</a>
-    </footer>
+
 </body>
 </html>

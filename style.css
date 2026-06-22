@@ -58,7 +58,7 @@
         }
 
         a { text-decoration: none; color: inherit; border-bottom: none; cursor: pointer; }
-        a:hover { color: var(--color-text); }
+        a:not(.portfolio-item):hover { color: var(--color-text); opacity: 0.7; transition: opacity 0.2s; }
         ul, ol { margin: 0; padding: 0; list-style: none; }
         
         h1, h2, h3, h4, p { margin: 0; font-weight: 400; line-height: 1; }
@@ -137,7 +137,7 @@
         .project-meta { font-size: 1.2rem; font-weight: 500; line-height: 1.25; color: var(--color-text); margin-bottom: var(--spacing-text-to-bottom-img); }
         
         .media-item { width: 100%; margin-bottom: var(--spacing-img-to-bottom-text); position: relative; }
-        .media-item img { width: 100%; height: auto; display: block; }
+        .media-item img { width: 100%; height: auto; display: block; background-color: #f0f0f0; }
 
         .text-columns { 
             display: flex; 
@@ -197,9 +197,12 @@
         /* 移除最後一個項目的底線 */
         .cv-container .text-columns:last-child {
             border-bottom: none;
-            margin-bottom: 3rem; 
+            margin-bottom: 3rem;
         }
-        
+
+        .cv-container .text-col-left { flex: 0 0 auto; width: 30%; }
+        .cv-container .text-col-right { flex: 1; width: auto; }
+
         /* CV 標題加粗且為黑色 */
         .cv-container h3 { 
             font-size: 1.2rem; 
@@ -222,6 +225,54 @@
         .cv-container .cv-title,
         .cv-container .text-body {
             color: #000000;
+        }
+
+        /* =========================================
+           Homepage Portfolio Grid
+           ========================================= */
+        .portfolio-grid {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 1.5rem;
+            width: 100%;
+        }
+
+        .portfolio-column {
+            display: flex;
+            flex-direction: column;
+            width: 49%;
+            gap: 1.5rem;
+        }
+
+        .portfolio-item {
+            display: block;
+            width: 100%;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .portfolio-item-title {
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            background-color: rgba(255, 255, 255, 0.8);
+            display: flex; align-items: center; justify-content: center; text-align: center;
+            padding: 2rem; box-sizing: border-box;
+            opacity: 0; transition: opacity 0.3s ease;
+            font-size: 2rem; font-weight: 500; color: var(--color-text);
+            margin: 0; line-height: 1.1; letter-spacing: -0.02em;
+        }
+
+        .portfolio-item:hover .portfolio-item-title { opacity: 1; }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(1rem); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .fade-in {
+            opacity: 0;
+            animation: fadeIn 0.8s ease-out forwards;
+            animation-delay: var(--animation-delay, 0ms);
         }
 
         /* =========================================
@@ -288,6 +339,27 @@
             #mobile-menu-overlay .menu-content { display: flex; flex-direction: column; gap: 2rem; }
             #mobile-menu-overlay .section-title { font-size: 1.2rem; color: var(--color-caption); margin-bottom: 0.5rem; }
             #mobile-menu-overlay .menu-links a { display: block; font-size: 1.8rem; font-weight: 500; margin-bottom: 0.5rem; color: var(--color-text); }
+
+            .portfolio-grid { flex-direction: column; }
+            .portfolio-column { display: contents; }
+            .portfolio-column:first-child > a:nth-child(1) { order: 1; }
+            .portfolio-column:first-child > a:nth-child(2) { order: 3; }
+            .portfolio-column:first-child > a:nth-child(3) { order: 5; }
+            .portfolio-column:first-child > a:nth-child(4) { order: 7; }
+            .portfolio-column:first-child > a:nth-child(5) { order: 9; }
+            .portfolio-column:first-child > a:nth-child(6) { order: 11; }
+            .portfolio-column:last-child  > a:nth-child(1) { order: 2; }
+            .portfolio-column:last-child  > a:nth-child(2) { order: 4; }
+            .portfolio-column:last-child  > a:nth-child(3) { order: 6; }
+            .portfolio-column:last-child  > a:nth-child(4) { order: 8; }
+            .portfolio-column:last-child  > a:nth-child(5) { order: 10; }
+            .portfolio-item { display: block; position: static; width: 100%; }
+            .portfolio-item-title {
+                position: static; width: auto; height: auto;
+                background-color: transparent; display: block;
+                text-align: left; padding: 0; margin-top: 0.75rem;
+                opacity: 1 !important;
+            }
         }
 .video-container {
     position: relative;
@@ -297,6 +369,23 @@
 }
 
 .video-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.video-wrapper {
+    position: relative;
+    padding-bottom: 56.25%;
+    height: 0;
+    width: 100%;
+    overflow: hidden;
+    background-color: #f0f0f0;
+}
+
+.video-wrapper iframe {
     position: absolute;
     top: 0;
     left: 0;
@@ -323,6 +412,6 @@ img {
 
 /* 2. 移除指針事件 (防止右鍵選單，但注意這會讓 <a> 標籤內的圖片無法點擊) */
 /* 如果圖片純展示，不具備連結功能，使用 pointer-events: none 是最徹底的 */
-.media-item img, .portfolio-item img, .profile-photo {
+.media-item img, .profile-photo {
     pointer-events: none;
 }

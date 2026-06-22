@@ -3,305 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LCT</title>
+    <title>Below the Wugu Mountain — LCT</title>
+    <meta name="description" content="THU thesis project transforming the Wugu Mountain landfill into adaptive urban infrastructure — a time machine for post-industrial environmental resilience.">
+    <meta property="og:title" content="Below the Wugu Mountain — LCT">
+    <meta property="og:description" content="THU thesis project transforming the Wugu Mountain landfill into adaptive urban infrastructure — a time machine for post-industrial environmental resilience.">
+    <meta property="og:type" content="website">
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&display=swap" rel="stylesheet">
-
-    <style>
-        :root {
-            --sidebar-width: 50%;
-            --page-padding: 1rem; 
-            
-            /* 間距設定保持不變 */
-            --spacing-text-to-bottom-img: 1.5rem;
-            --spacing-img-to-bottom-text: 0.75rem; 
-            
-            /* [修改這裡] 顏色系統：將原本的 rgba 改為 #000000 (純黑) */
-            --color-text: #000000;           /* 一般文字純黑 */
-            --color-secondary: #000000;      /* 連結與次要文字純黑 (這會讓左側欄位變黑) */
-            
-            /* 保持灰色給說明文字用 */
-            --color-caption: rgba(0, 0, 0, 0.4);
-            --color-bg: #ffffff;
-            --color-line: rgba(0, 0, 0, 0.15);
-        }
-
-        /* =========================================
-           核心響應式引擎 (Responsive Engine)
-           ========================================= */
-        
-        html {
-            /* [區間 3] 手機/小視窗 (< 900px) */
-            font-size: 12.5px; 
-            
-            font-family: 'Inter', Helvetica, Arial, sans-serif;
-            -webkit-font-smoothing: antialiased;
-            background-color: var(--color-bg);
-            letter-spacing: -0.02em; 
-        }
-
-        /* [區間 2] 中等視窗 (900px ~ 1462px) */
-        @media (min-width: 900px) {
-            html {
-                font-size: 15px;
-            }
-        }
-
-        /* [區間 1] 大視窗 (> 1462px) */
-        @media (min-width: 1462px) {
-            html {
-                font-size: 1.05vw;
-            }
-        }
-
-        /* =========================================
-           通用樣式
-           ========================================= */
-
-        body {
-            margin: 0;
-            padding: 0;
-            color: var(--color-text);
-            line-height: 1.1; 
-            overflow-x: hidden;
-            transition: padding-right 0s; 
-        }
-
-        a { text-decoration: none; color: inherit; border-bottom: none; cursor: pointer; }
-        a:hover { color: var(--color-text); }
-        ul, ol { margin: 0; padding: 0; list-style: none; }
-        
-        h1, h2, h3, h4, p { margin: 0; font-weight: 400; line-height: 1; }
-
-        .fw-medium { font-weight: 500; }
-        .text-caption { color: var(--color-caption); font-size: 1rem; }
-        
-        .text-body { 
-            font-size: 1.2rem; 
-            line-height: 1.15; 
-            margin-bottom: 0.25rem; 
-            color: var(--color-text); 
-        }
-        
-        /* ------------------------------------------------
-           Desktop Sidebar (左側欄)
-           ------------------------------------------------ */
-        .left-sidebar {
-            position: fixed; top: 0; left: 0; width: var(--sidebar-width); height: 100vh;
-            padding: var(--page-padding); box-sizing: border-box; z-index: 10;
-            display: flex; flex-direction: column; justify-content: flex-start;
-            overflow-y: auto; padding-right: 3rem; 
-        }
-
-        .main-content {
-            margin-left: var(--sidebar-width);
-            width: calc(100% - var(--sidebar-width));
-            min-height: 100vh; position: relative; z-index: 1;
-            padding-top: var(--page-padding); padding-bottom: 4rem;
-            display: flex; flex-direction: column; align-items: flex-end; 
-        }
-
-        .content-container {
-            width: 100%; padding-right: var(--page-padding); padding-left: 1.5rem; 
-            box-sizing: border-box;
-        }
-
-        /* ------------------------------------------------
-           元件樣式
-           ------------------------------------------------ */
-        .header-row { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 0; width: 100%; }
-        .header-row h1 { font-size: 2.2rem; line-height: 1; color: var(--color-text); flex: 1; padding-right: 2rem; letter-spacing: -0.03em; }
-        .index-link-inline { font-size: 2rem; color: var(--color-secondary); text-align: right; white-space: nowrap; line-height: 1; font-weight: 500; }
-
-        .site-title { font-size: 2rem; margin-bottom: 3.5rem; color: var(--color-text); line-height: 1.1; font-weight: 900; }
-        
-        .nav-links { margin-bottom: 3.5rem; font-size: 2rem; line-height: 1.0; }
-        .nav-links a {
-            display: block;
-            color: #000000; /* 改為黑色 */
-            font-weight: 500;
-            margin-bottom: 0;
-        }
-
-        /* Hover 時維持黑色或稍微調整透明度 */
-        .nav-links a:hover {
-            color: rgba(0, 0, 0, 0.6) !important; /* 60% 黑色 */
-            opacity: 1 !important; /* 確保不透明度為 1，避免顏色過淡 */
-            transition: color 0.2s ease;
-        }
-        
-        .project-list-title, .project-list { font-size: 2rem; color: var(--color-secondary); line-height: 1.0; }
-        .project-list-title { color: var(--color-text); margin-bottom: 0.5rem; font-weight: 500; }
-        .project-list li { margin-bottom: 0; display: flex; }
-        .project-list a { font-weight: 500; }
-        .project-list .num { width: 1.5em; color: #000000; }
-        .project-list a { color: #000000; }
-
-        /* 2. 針對 1-7 的專案列表按鈕 */
-        .project-list a:hover {
-            color: rgba(0, 0, 0, 0.6) !important; /* 60% 黑色 */
-            transition: color 0.2s ease;
-        }
-
-        .project-subtitle { font-size: 2.2rem; color: var(--color-caption); margin-bottom: 1.5rem; line-height: 1; }
-        .project-meta { font-size: 1.2rem; font-weight: 500; line-height: 1.25; color: var(--color-text); margin-bottom: var(--spacing-text-to-bottom-img); }
-        
-        .media-item { width: 100%; margin-bottom: var(--spacing-img-to-bottom-text); position: relative; }
-        .media-item img { width: 100%; height: auto; display: block; }
-
-        .text-columns { 
-            display: flex; 
-            flex-direction: column; 
-            gap: 0.5rem; 
-            margin-bottom: var(--spacing-text-to-bottom-img); 
-            width: 100%; 
-        }
-        .text-col-left { 
-            flex: 0 0 auto; 
-            width: 100%; 
-        }
-        .text-col-right { 
-            flex: 1; 
-            width: 100%; 
-        }
-        .text-columns h3 { 
-            font-size: 1.2rem; 
-            line-height: 1.15; 
-            font-weight: 500; 
-            color: var(--color-text); 
-        }
-        
-        /* =========================================
-           Overlays (Popup Pages)
-           ========================================= */
-        #info-overlay, #mobile-menu-overlay {
-            display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 9999;
-            background-color: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(5px); -webkit-backdrop-filter: blur(5px);
-            overflow-y: auto; 
-        }
-
-        /* Info Overlay Styles */
-        .overlay-wrapper { display: flex; width: 100%; min-height: 100%; }
-        .overlay-sidebar { width: 50%; padding: var(--page-padding); padding-right: 3rem; box-sizing: border-box; }
-        .overlay-content { width: 50%; padding: var(--page-padding); padding-left: 1.5rem; padding-bottom: 4rem; box-sizing: border-box; }
-        
-        #info-overlay .profile-photo { width: 100%; max-width: 450px; margin-bottom: 1.5rem; display: block; background-color: rgba(0,0,0,0.05); }
-        #info-overlay .bio-text { font-size: 1.2rem; line-height: 1.4; color: var(--color-text); max-width: 80%; font-weight: 500; }
-        #info-overlay .bio-text p {
-            margin: 0;
-            line-height: 1.4; /* 同步設定 */
-        }
-        #info-overlay .header-row { width: 100%; display: flex; justify-content: space-between; margin-bottom: 0.5rem; }
-
-        .cv-container { margin-top: 3.0rem; width: 100%; padding-right: var(--page-padding); box-sizing: border-box; }
-        
-        /* CV 項目分隔線設定 */
-        .cv-container .text-columns { 
-            display: flex; 
-            gap: 2rem; 
-            padding-bottom: 1.5rem;
-            margin-bottom: 1.5rem;
-            border-bottom: 2px solid #000000;
-        }
-        /* 移除最後一個項目的底線 */
-        .cv-container .text-columns:last-child {
-            border-bottom: none;
-            margin-bottom: 3rem; 
-        }
-        
-        /* CV 標題加粗且為黑色 */
-        .cv-container h3 { 
-            font-size: 1.2rem; 
-            color: #000000; 
-            line-height: 1.15; 
-            font-weight: 700; 
-            margin-top: 0.1rem; 
-        }
-        
-        .cv-item { margin-bottom: 1.5rem; }
-        .cv-title { font-weight: 500; margin-bottom: 0.2rem; font-size: 1.2rem; }
-
-        /* 資訊視窗內的說明資訊 (如 09/2014-06/2019, Issued by...) */
-        .cv-container .text-caption {
-            color: var(--color-caption) !important;
-            font-size: 1rem;
-        }
-
-        /* 確保學歷、職稱與內文是黑色 */
-        .cv-container .cv-title,
-        .cv-container .text-body {
-            color: #000000;
-        }
-
-        /* =========================================
-           RWD: Mobile Layout (< 900px)
-           ========================================= */
-        .mobile-header, .mobile-footer { display: none; }
-
-        @media (max-width: 900px) {
-            /* --- 其他手機版設定 (Sidebar 隱藏等) --- */
-            :root { --sidebar-width: 0px; }
-            .left-sidebar { display: none; }
-            .mobile-hidden { display: none !important; }
-            .mobile-header { display: flex; justify-content: space-between; padding: 1rem; position: fixed; top: 0; left: 0; width: 100%; background: rgba(255, 255, 255, 0.98); z-index: 90; border-bottom: 1px solid var(--color-line); box-sizing: border-box; }
-            .mobile-header a { font-size: 1.8rem; font-weight: 500; cursor: pointer; line-height: 1; letter-spacing: -0.02em; }
-            .mobile-footer { display: flex; justify-content: space-between; padding: 1rem; position: fixed; bottom: 0; left: 0; width: 100%; background: rgba(255, 255, 255, 0.98); z-index: 90; border-top: 1px solid var(--color-line); box-sizing: border-box; }
-            .mobile-footer a { font-size: 1.8rem; font-weight: 500; cursor: pointer; line-height: 1; letter-spacing: -0.02em; }
-            .main-content { 
-                margin-left: 0; 
-                width: 100%; 
-                align-items: flex-start;
-                padding: 5rem 1rem 5rem 1rem; 
-                box-sizing: border-box; 
-            }
-            .content-container { 
-                width: 100%; 
-                padding: 0 !important; 
-                box-sizing: border-box;
-            }
-            .index-link-inline { display: none; }
-            
-            /* --- 修正區 --- */
-
-            /* 1. 恢復標題下方的呼吸空間 */
-            .header-row {
-                margin-bottom: 0rem !important; 
-            }
-            .header-row h1 { 
-                font-size: 1.8rem; 
-                padding-right: 0; 
-                margin-bottom: 0.5rem !important; /* 改回 0.5rem，不再是 0 */
-                line-height: 1; 
-            }
-
-            /* 2. 資訊區塊 (Year...) 的上下距離維持你滿意的 2.5rem */
-            .project-subtitle {
-                font-size: 1.8rem;
-                margin-bottom: 2.5rem !important; /* 上方距離 */
-            }
-
-            .project-meta {
-                margin-bottom: 2.5rem !important; /* 下方距離 */
-            }
-
-            /* --- 其他不變 --- */
-            #info-overlay .bio-text { max-width: 100%; line-height: 1.4; }
-            .overlay-wrapper { flex-direction: column; }
-            .overlay-sidebar, .overlay-content { width: 100%; padding-left: 1rem; }
-            .overlay-sidebar { padding-bottom: 2rem; padding-top: 5rem; }
-            .cv-container { margin-top: 3.5rem; padding-right: 0; }
-            .cv-container .text-columns { flex-direction: column; gap: 0.5rem; margin-bottom: 2.5rem; }
-            .cv-container .text-col-left { margin-bottom: 0.25rem; }
-            .cv-item { margin-bottom: 1.2rem; }
-            #mobile-menu-overlay { background: white; padding: 1rem; padding-top: 5rem; box-sizing: border-box; }
-            #mobile-menu-overlay .menu-content { display: flex; flex-direction: column; gap: 2rem; }
-            #mobile-menu-overlay .section-title { font-size: 1.2rem; color: var(--color-caption); margin-bottom: 0.5rem; }
-            #mobile-menu-overlay .menu-links a { display: block; font-size: 1.8rem; font-weight: 500; margin-bottom: 0.5rem; color: var(--color-text); }
-        }
-    </style>
+    <link rel="stylesheet" href="../style.css">
 </head>
 <body>
 
@@ -315,7 +26,7 @@
         <div class="nav-links">
             <a href="javascript:void(0)" onclick="toggleOverlay()">Information</a>
             <a href="mailto:linchaotangus@gmail.com">Email</a>
-            <a href="https://www.linkedin.com/in/chaotang-lin/" target="_blank">Linkedin</a>
+            <a href="https://www.linkedin.com/in/chaotang-lin/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
         </div>
         <div class="project-list-wrapper">
             <div class="project-list-title">Projects</div>
@@ -345,7 +56,7 @@
             <p class="project-subtitle">A Time Machine for the Anthropocene</p>
             <div class="project-meta"> Year: 2019<br> Type: THU Thesis Project (Individual Work)<br> Location: Taipei, Taiwan<br> Instructor: Yu-Han Lin </div>
             
-            <div class="media-item"> <img src="Screenshot 2025-09-07 211810.png" alt="Project Image 1"> </div>
+            <div class="media-item"> <img src="Screenshot 2025-09-07 211810.png" alt="Project Image 1" loading="lazy"> </div>
             
             <div class="text-columns">
                 <div class="text-col-left">
@@ -356,7 +67,7 @@
                 </div>
             </div>
             
-            <div class="media-item"> <img src="Screenshot 2025-09-07 211916.png" alt="Project Image 2"> </div>
+            <div class="media-item"> <img src="Screenshot 2025-09-07 211916.png" alt="Project Image 2" loading="lazy"> </div>
             
             <div class="text-columns">
                 <div class="text-col-left">
@@ -367,7 +78,7 @@
                 </div>
             </div>
 
-            <div class="media-item"><img src="Screenshot 2025-09-07 212341.png" alt="Image 4"></div>
+            <div class="media-item"><img src="Screenshot 2025-09-07 212341.png" alt="Image 4" loading="lazy"></div>
 
             <div class="text-columns">
                 <div class="text-col-left">
@@ -378,7 +89,7 @@
                 </div>
             </div>
 
-            <div class="media-item"><img src="Screenshot 2025-09-07 212134.png" alt="Image 5"></div>
+            <div class="media-item"><img src="Screenshot 2025-09-07 212134.png" alt="Image 5" loading="lazy"></div>
 
             <div class="text-columns">
                 <div class="text-col-left">
@@ -389,10 +100,10 @@
                 </div>
             </div>
 
-            <div class="media-item"><img src="Screenshot 2025-09-07 212410.png" alt="Image 6"></div>
-            <div class="media-item"><img src="Screenshot 2025-09-07 212452.png" alt="Image 7"></div>
-            <div class="media-item"><img src="Screenshot 2025-09-07 212607.png" alt="Image 8"></div>
-            <div class="media-item"><img src="Screenshot 2025-09-07 212630.png" alt="Image 9"></div>
+            <div class="media-item"><img src="Screenshot 2025-09-07 212410.png" alt="Image 6" loading="lazy"></div>
+            <div class="media-item"><img src="Screenshot 2025-09-07 212452.png" alt="Image 7" loading="lazy"></div>
+            <div class="media-item"><img src="Screenshot 2025-09-07 212607.png" alt="Image 8" loading="lazy"></div>
+            <div class="media-item"><img src="Screenshot 2025-09-07 212630.png" alt="Image 9" loading="lazy"></div>
         </div>
     </main>
 
@@ -413,7 +124,7 @@
                 <div class="nav-links mobile-hidden">
                     <a href="#" class="active" onclick="toggleOverlay()">Information</a>
                     <a href="mailto:linchaotangus@gmail.com">Email</a>
-                    <a href="https://www.linkedin.com/in/chaotang-lin/">Linkedin</a>
+                    <a href="https://www.linkedin.com/in/chaotang-lin/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
                 </div>
                 <div style="margin-top: 0;">
                     <img src="../About/Untitled-5.jpg" alt="Portrait" class="profile-photo">
@@ -500,7 +211,7 @@
                     <div class="menu-links">
                         <a onclick="toggleMobileMenu(); setTimeout(toggleOverlay, 50);">Information</a>
                         <a href="mailto:linchaotangus@gmail.com">Email</a>
-                        <a href="https://www.linkedin.com/in/chaotang-lin/" target="_blank">Linkedin</a>
+                        <a href="https://www.linkedin.com/in/chaotang-lin/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
                     </div>
                 </div>
                 <div class="menu-group">

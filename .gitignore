@@ -11,11 +11,16 @@
 .DS_Store
 Thumbs.db
 Old/
+old/
 Backup/
 
 # Original ignored directories
 Ref/
 working/
+
+# Ignore stray scratch/draft files
+New Text Document.txt
+*.mov
 
 # Ignore local README.md
 README.md

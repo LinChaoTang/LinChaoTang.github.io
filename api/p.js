@@ -26,9 +26,10 @@ module.exports = async function handler(req, res) {
   const webhookUrl = process.env.SHEET_WEBHOOK_URL;
   const secret = process.env.LOG_SECRET;
 
+  let debugStatus = 'skipped-no-env';
   if (webhookUrl && secret) {
     try {
-      await fetch(webhookUrl, {
+      const wr = await fetch(webhookUrl, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -37,13 +38,18 @@ module.exports = async function handler(req, res) {
           ip, country, region, city, org, ua, referer,
           isBot: isBot ? 'BOT' : ''
         }),
-        signal: AbortSignal.timeout(3000)
+        signal: AbortSignal.timeout(8000)
       });
+      debugStatus = `posted-${wr.status}`;
     } catch (e) {
-      // logging is best-effort; the redirect must still happen
+      debugStatus = `error-${e.name}-${e.message}`.slice(0, 100);
     }
   }
 
-  res.writeHead(302, { Location: '/portfolio-2026.pdf' });
+  res.writeHead(302, {
+    Location: '/portfolio-2026.pdf',
+    'X-Debug-HasEnv': webhookUrl && secret ? 'yes' : 'no',
+    'X-Debug-Status': debugStatus
+  });
   res.end();
 };

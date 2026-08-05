@@ -2,8 +2,14 @@
 *.indd
 *.psb
 *.psd
+*.mov
+New Text Document.txt
 
 # Ignore directories
 Ref/
 working/
 .vercel/
+Old/
+OLD/
+old/
+Backup/

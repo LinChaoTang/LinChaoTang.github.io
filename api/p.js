@@ -13,7 +13,7 @@ module.exports = async function handler(req, res) {
   try {
     if (ip) {
       const token = process.env.IPINFO_TOKEN ? `?token=${process.env.IPINFO_TOKEN}` : '';
-      const r = await fetch(`https://ipinfo.io/${ip}/json${token}`, { signal: AbortSignal.timeout(2000) });
+      const r = await fetch(`https://ipinfo.io/${ip}/json${token}`, { signal: AbortSignal.timeout(1500) });
       if (r.ok) {
         const data = await r.json();
         org = data.org || '';
@@ -26,10 +26,9 @@ module.exports = async function handler(req, res) {
   const webhookUrl = process.env.SHEET_WEBHOOK_URL;
   const secret = process.env.LOG_SECRET;
 
-  let debugStatus = 'skipped-no-env';
   if (webhookUrl && secret) {
     try {
-      const wr = await fetch(webhookUrl, {
+      await fetch(webhookUrl, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -38,18 +37,13 @@ module.exports = async function handler(req, res) {
           ip, country, region, city, org, ua, referer,
           isBot: isBot ? 'BOT' : ''
         }),
-        signal: AbortSignal.timeout(8000)
+        signal: AbortSignal.timeout(7000)
       });
-      debugStatus = `posted-${wr.status}`;
     } catch (e) {
-      debugStatus = `error-${e.name}-${e.message}`.slice(0, 100);
+      // logging is best-effort; the redirect must still happen
     }
   }
 
-  res.writeHead(302, {
-    Location: '/portfolio-2026.pdf',
-    'X-Debug-HasEnv': webhookUrl && secret ? 'yes' : 'no',
-    'X-Debug-Status': debugStatus
-  });
+  res.writeHead(302, { Location: '/portfolio-2026.pdf' });
   res.end();
 };

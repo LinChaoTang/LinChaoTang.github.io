@@ -44,6 +44,6 @@ module.exports = async function handler(req, res) {
     }
   }
 
-  res.writeHead(302, { Location: '/portfolio-2026.pdf' });
+  res.writeHead(302, { Location: '/portfolio-2026-file.pdf' });
   res.end();
 };
